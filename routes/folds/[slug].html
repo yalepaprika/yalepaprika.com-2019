@@ -2,18 +2,50 @@
   <title>{fold.title.rendered}</title>
 </svelte:head>
 
-<h1>{fold.title.rendered}</h1>
-
-<div class='content'>
-  {@html fold.content.rendered}
+<div class="x">
+  <div class="c2 p1">
+    <h1>{fold.title.rendered}</h1>
+    <h2>vol. {fold.meta.volume}, no. {fold.meta.number}</h2>
+  </div>
+  <div class="c4 p1">
+    {@html fold.content.rendered}
+  </div>
+  <div class="c4 p1">
+    <h3>Articles</h3>
+    <ArticleList articles={fold.meta.posts} />
+    <h3>Editors</h3>
+    <ul>
+      {#each fold.meta.fold_editors as editor}
+        <li><a rel="prefetch" href="/contributors/{editor.post_name}">{editor.post_title}</a></li>
+      {/each}
+    </ul>
+    <h3>Graphic Designer</h3>
+    <ul>
+      {#each fold.meta.graphic_designer as designer}
+        <li><a rel="prefetch" href="/contributors/{designer.post_name}">{designer.post_title}</a></li>
+      {/each}
+    </ul>
+    <h3>Positions Editor</h3>
+    <ul>
+      {#each fold.meta.positions_editor as editor}
+        <li><a rel="prefetch" href="/contributors/{editor.post_name}">{editor.post_title}</a></li>
+      {/each}
+    </ul>
+    <h3>Web Editor</h3>
+    <ul>
+      {#each fold.meta.web_editor as editor}
+        <li><a rel="prefetch" href="/contributors/{editor.post_name}">{editor.post_title}</a></li>
+      {/each}
+    </ul>
+    <p>Published on {fold.meta.publication_date}</p>
+  </div>
 </div>
-
-<style>
-
-</style>
 
 <script>
   export default {
+    components: {
+      ArticleList: '../../components/ArticleList.html'
+    },
     async preload({ params, query }) {
       const res = await this.fetch(`folds/${params.slug}.json`);
       const data = await res.json();

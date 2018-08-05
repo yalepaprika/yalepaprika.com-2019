@@ -6,10 +6,6 @@
 
 <ul>
   {#each folds as fold}
-    <!-- we're using the non-standard `rel=prefetch` attribute to
-        tell Sapper to load the data for the page as soon as
-        the user hovers over the link or taps it, instead of
-        waiting for the 'click' event -->
     <li><a rel='prefetch' href='folds/{fold.meta.volume}-{fold.meta.number}'>{fold.title.rendered}</a></li>
   {/each}
 </ul>
@@ -28,6 +24,9 @@
       } else {
         this.error(res.status, data.message);
       }
+    },
+    oncreate() {
+      console.log(this.get())
     }
   };
 </script>

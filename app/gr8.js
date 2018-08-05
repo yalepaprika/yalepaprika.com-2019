@@ -7,7 +7,8 @@ const opts = {
 
 const colors = {
   black: '#000',
-  white: '#fff'
+  white: '#fff',
+  paprika: 'hsl(16, 83%, 54%)'
 }
 
 const borderWeights = [1]

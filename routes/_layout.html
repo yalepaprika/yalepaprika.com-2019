@@ -1,11 +1,33 @@
 <Nav segment={child.segment}/>
 
-<main class="pt2">
+
+<main class="pt4 pb2 px1 psr">
+  <div id="background" class="psa t0 l0 r0"></div>
   <svelte:component this={child.component} {...child.props}/>
 </main>
 
 <style>
+  #background {
+    height: 100vh;
+    z-index: -1;
+    background: linear-gradient(
+      to top,
+      hsla(16, 83%, 54%, 0) 0%,
+      hsla(16, 83%, 54%, 0.262) 19%,
+      hsla(16, 83%, 54%, 0.459) 34%,
+      hsla(16, 83%, 54%, 0.618) 47%,
+      hsla(16, 83%, 54%, 0.722) 56.5%,
+      hsla(16, 83%, 54%, 0.806) 65%,
+      hsla(16, 83%, 54%, 0.874) 73%,
+      hsla(16, 83%, 54%, 0.925) 80.2%,
+      hsla(16, 83%, 54%, 0.958) 86.1%,
+      hsla(16, 83%, 54%, 0.979) 91%,
+      hsla(16, 83%, 54%, 0.992) 95.2%,
+      hsla(16, 83%, 54%, 0.998) 98.2%,
+      hsla(16, 83%, 54%, 1) 100%
+    );
 
+  }
 </style>
 
 <script>
