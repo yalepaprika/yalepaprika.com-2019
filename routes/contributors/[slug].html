@@ -1,0 +1,27 @@
+<svelte:head>
+  <title>{contributor.title.rendered}</title>
+</svelte:head>
+
+<h1>{contributor.title.rendered}</h1>
+
+<style>
+
+</style>
+
+<script>
+  export default {
+    async preload({ params, query }) {
+      const res = await this.fetch(`contributors/${params.slug}.json`);
+      const data = await res.json();
+
+      if (res.status === 200) {
+        return { contributor: data };
+      } else {
+        this.error(res.status, data.message);
+      }
+    },
+    oncreate() {
+      console.log(this.get())
+    }
+  };
+</script>

@@ -1,0 +1,33 @@
+html {
+  font-size: 11pt;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+h1, h2, h3, h4, h5, h6, h7 {
+  font-size: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  margin-bottom: 1.2rem;
+}
+
+button, input {
+  outline: none;
+}
+
+ul, ol, li { 
+  list-style: none;
+}
+
+ul, ol {
+  margin-bottom: 1.2rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+p {
+  margin-bottom: 1.2rem;
+}

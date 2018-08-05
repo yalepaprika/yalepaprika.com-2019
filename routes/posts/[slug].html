@@ -1,0 +1,28 @@
+<svelte:head>
+  <title>{post.title.rendered}</title>
+</svelte:head>
+
+<h1>{post.title.rendered}</h1>
+
+<div class='content'>
+  {@html post.content.rendered}
+</div>
+
+<style>
+
+</style>
+
+<script>
+  export default {
+    async preload({ params, query }) {
+      const res = await this.fetch(`posts/${params.slug}.json`);
+      const data = await res.json();
+
+      if (res.status === 200) {
+        return { post: data };
+      } else {
+        this.error(res.status, data.message);
+      }
+    }
+  };
+</script>

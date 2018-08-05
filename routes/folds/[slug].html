@@ -1,0 +1,33 @@
+<svelte:head>
+  <title>{fold.title.rendered}</title>
+</svelte:head>
+
+<h1>{fold.title.rendered}</h1>
+
+<div class='content'>
+  {@html fold.content.rendered}
+</div>
+
+<style>
+
+</style>
+
+<script>
+  export default {
+    async preload({ params, query }) {
+      const res = await this.fetch(`folds/${params.slug}.json`);
+      const data = await res.json();
+      if (res.status === 200) {
+        return { fold: data };
+      } else {
+        this.error(res.status, data.message);
+      }
+    },
+    oncreate() {
+      // this fires when the component has been
+      // rendered to the DOM
+      console.log('in oncreate', this.get());
+    }
+
+  };
+</script>

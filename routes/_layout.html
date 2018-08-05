@@ -1,0 +1,17 @@
+<Nav segment={child.segment}/>
+
+<main class="pt2">
+  <svelte:component this={child.component} {...child.props}/>
+</main>
+
+<style>
+
+</style>
+
+<script>
+  export default {
+    components: {
+      Nav: '../components/Nav.html'
+    }
+  };
+</script>

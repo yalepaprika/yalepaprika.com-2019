@@ -1,0 +1,56 @@
+<header class="{hidden ? 'hidden' : ''} psf c12 usn t0 l0 r0 x px1 bgc-white">
+  <ul class="c6 pl2 mb0">
+    <li class="di pr1 {segment === undefined ? 'tdi' : ''}"><a href="/">Paprika!</a></li>
+    <li class="di pr1 {segment === 'folds' ? 'tdi' : ''}"><a rel=prefetch href="/folds">Folds</a></li>
+    <li class="di pr1 {segment === 'index' ? 'tdi' : ''}"><a href="/index">Index!</a></li>
+  </ul>
+  <ul class="c6 pl2 mb0">
+      <li class="di pr1 {segment === 'about' ? 'tdi' : ''}"><a href="/about">About</a></li>
+      <li class="di pr1 {segment === 'support' ? 'tdi' : ''}"><a href="/support">Support</a></li>
+      <li class="di pr1 {segment === 'search' ? 'tdi' : ''}"><a href="/search">Search</a></li>
+  </ul>
+</header>
+
+<style>
+  header {
+    transition: transform 250ms ease;
+  }
+  header.hidden {
+    transform: translate(0, -100%);
+    -webkit-transform: translate(0, -100%);
+    -ms-transform: translate(0, -100%);
+  }
+</style>
+
+<script>
+  import raf from 'raf'
+  export default {
+    data() {
+      return {
+        hidden: false,
+        position: 0
+      }
+    },
+    oncreate () {
+      this.animation = raf(
+        function tick () {
+          var { position } = this.get()
+          if (position !== window.scrollY) {
+            var lastPos = position
+            this.set({position: window.scrollY })
+            var active = lastPos > window.scrollY
+            if (active || window.scrollY < 100) {
+              this.set({ hidden: false })
+            } else {
+              this.set({ hidden: true })
+            }
+          }
+          raf(tick.bind(this))
+        }.bind(this)
+      )
+    },
+    ondestroy () {
+      raf.cancel(this.animation)
+    }
+  }
+</script>
