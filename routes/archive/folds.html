@@ -1,25 +1,22 @@
 <svelte:head>
-  <title>Sapper project template</title>
+  <title>Folds</title>
 </svelte:head>
 
-<div class="x">
-  <div class="c6">{ fold.post_title }</div>
-  <div class="c4">{ @html fold.post_content }</div>
-</div>
-<div class="psa b0 r0 l0 p2 pt1">
-  Footer
-</div>
-
-<style>
-</style>
+<ul>
+   {#each folds as fold}
+      <li>
+        <a rel='prefetch' href='folds/{fold.meta.volume}-{fold.meta.number}'><h1>{fold.title.rendered}</h1></a>
+      </li>
+  {/each}
+</ul>
 
 <script>
   export default {
     async preload({ params, query }) {
-      const res = await this.fetch(`index.json`)
+      const res = await this.fetch(`/folds.json`)
       const data = await res.json()
       if (res.status === 200) {
-        return { fold: data }
+        return { folds: data }
       } else {
         this.error(res.status, data.message);
       }

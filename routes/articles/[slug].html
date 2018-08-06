@@ -2,27 +2,58 @@
   <title>{article.title.rendered}</title>
 </svelte:head>
 
-<h1>{article.title.rendered}</h1>
 
-<div class='content'>
-  {@html article.content.rendered}
+<div class="x xafs">
+  <div class="c2 p1">
+    {#if article.meta}
+      <ul>
+        {#each article.meta.contributors as contributor}
+          <li>
+            <h2><a rel="prefetch" href="/contributors/{contributor.post_name}">{contributor.post_title}</a></h2>
+            <h3>{contributor.meta.degree}, {contributor.meta.graduation_year}</h3>
+          </li>
+        {/each}
+      </ul>
+      <h4>Paprika!</h4>
+      {#if article.meta.fold && article.meta.fold.length}
+        <p>vol. {article.meta.fold[0].meta.volume}, no. {article.meta.fold[0].meta.number}</p>
+        <h5>{dateFormat(article.meta.fold[0].meta.publication_date)}</h5>
+      {/if}
+    {/if}
+  </div>
+  <div class="c6 p1 content">
+    <h1 class="co2">{@html article.title.rendered}</h1>
+    {@html article.content.rendered}
+  </div>
 </div>
 
 <style>
-
+  h1 {
+    font-size: 4rem;
+    line-height: 0.9;
+    font-weight: 400;
+    margin-bottom: 3rem;
+  }
 </style>
 
 <script>
+  import dateFormat from '../_helpers/date-format.js'
+
   export default {
+    helpers: {
+      dateFormat
+    },
     async preload({ params, query }) {
       const res = await this.fetch(`articles/${params.slug}.json`);
       const data = await res.json();
-
       if (res.status === 200) {
         return { article: data };
       } else {
         this.error(res.status, data.message);
       }
+    },
+    oncreate() {
+      console.log(this.get())
     }
   };
 </script>

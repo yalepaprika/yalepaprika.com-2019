@@ -2,16 +2,23 @@
   <title>Folds</title>
 </svelte:head>
 
-<h1>Recent folds</h1>
-
-<ul>
-  {#each folds as fold}
-    <li><a rel='prefetch' href='folds/{fold.meta.volume}-{fold.meta.number}'>{fold.title.rendered}</a></li>
+<div class="x xw">
+   {#each folds as fold}
+    <div class="s5 p1">
+      <div class="fold b1-black x xjc xac">
+        <div class="tac">
+          <a rel='prefetch' href='folds/{fold.meta.volume}-{fold.meta.number}'><h1>{fold.title.rendered}</h1></a>
+          <h2>vol. {fold.meta.volume}, no. {fold.meta.number}</h2>
+        </div>
+      </div>
+    </div>
   {/each}
-</ul>
+</div>
 
 <style>
-
+  .fold {
+    height: 40vh;
+  }
 </style>
 
 <script>

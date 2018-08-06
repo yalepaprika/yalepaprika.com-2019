@@ -1,0 +1,27 @@
+<svelte:head>
+  <title>Contributors</title>
+</svelte:head>
+
+<ul>
+  {#each contributors as contributor}
+    <li><a rel='prefetch' href='contributors/{contributor.slug}'>{@html contributor.title.rendered}</a></li>
+  {/each}
+</ul>
+
+<style>
+
+</style>
+
+<script>
+  export default {
+    async preload({ params, query }) {
+      const res = await this.fetch(`/contributors.json`)
+      const data = await res.json()
+      if (res.status === 200) {
+        return { contributors: data }
+      } else {
+        this.error(res.status, data.message);
+      }
+    }
+  };
+</script>

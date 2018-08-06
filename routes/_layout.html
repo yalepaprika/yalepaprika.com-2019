@@ -1,12 +1,15 @@
 <Nav segment={child.segment}/>
 
 
-<main class="pt4 pb2 px1 psr">
+<main class="pt4 pb1 px1 psr">
   <div id="background" class="psa t0 l0 r0"></div>
   <svelte:component this={child.component} {...child.props}/>
 </main>
 
 <style>
+  main {
+    min-height: 100vh;
+  }
   #background {
     height: 100vh;
     z-index: -1;
@@ -26,7 +29,6 @@
       hsla(16, 83%, 54%, 0.998) 98.2%,
       hsla(16, 83%, 54%, 1) 100%
     );
-
   }
 </style>
 

@@ -1,25 +1,23 @@
 <svelte:head>
-  <title>Sapper project template</title>
+  <title>Support</title>
 </svelte:head>
 
 <div class="x">
-  <div class="c6">{ fold.post_title }</div>
-  <div class="c4">{ @html fold.post_content }</div>
+  <div class="c2 p1">
+    Support
+  </div>
+  <div class="c4 p1">
+    {@html page.content.rendered}
+  </div>
 </div>
-<div class="psa b0 r0 l0 p2 pt1">
-  Footer
-</div>
-
-<style>
-</style>
 
 <script>
   export default {
     async preload({ params, query }) {
-      const res = await this.fetch(`index.json`)
+      const res = await this.fetch(`/support.json`)
       const data = await res.json()
       if (res.status === 200) {
-        return { fold: data }
+        return { page: data }
       } else {
         this.error(res.status, data.message);
       }

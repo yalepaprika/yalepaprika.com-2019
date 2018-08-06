@@ -2,6 +2,28 @@
 	<title>About</title>
 </svelte:head>
 
-<h1>About this site</h1>
+<div class="x">
+  <div class="c2 p1">
+    About
+  </div>
+  <div class="c4 p1">
+    {@html page.content.rendered}
+  </div>
+</div>
 
-<p>This is the 'about' page. There's not much here.</p>
+<script>
+  export default {
+    async preload({ params, query }) {
+      const res = await this.fetch(`/about.json`)
+      const data = await res.json()
+      if (res.status === 200) {
+        return { page: data }
+      } else {
+        this.error(res.status, data.message);
+      }
+    },
+    oncreate() {
+      console.log(this.get())
+    }
+  };
+</script>

@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "compression": "^1.7.1",
+    "dayjs": "^1.7.4",
     "express": "^4.16.3",
     "gr8": "^3.1.5",
     "node-fetch": "^2.2.0",
