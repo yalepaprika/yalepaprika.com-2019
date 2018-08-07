@@ -1,6 +1,6 @@
 import api from '../_api'
 
-export async function get(req, res, err) {
+export async function get(req, res, next) {
 	const { slug } = req.params;
   const volume = slug.split('-')[0]
   const number = slug.split('-')[1]

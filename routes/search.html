@@ -1,1 +1,81 @@
-Search
+<svelte:head>
+  <title>Search</title>
+</svelte:head>
+
+<div class="x">
+  <div class="c2 p1">
+    <h1>Search</h1>
+  </div>
+  <div class="c4 p1">
+      <form class="mb1" on:submit="search(event)">
+        <input bind:value=searchQuery type=text>
+        <button type=submit>Search</button>
+      </form>
+      {#if results}
+        <h2>Results</h2>
+        <ul>
+          {#each results as result}
+            {#if result.type == 'post' }
+              <li><a rel='prefetch' href='articles/{result.slug}'>{@html result.title.rendered }</a></li>
+            {:elseif result.type == 'fold' }
+              <li><a rel='prefetch' href='folds/{result.meta.volume}-{result.meta.number}'>{@html result.title.rendered }</a></li>
+            {:else}
+              <li><a rel='prefetch' href='contributors/{result.slug}'>{@html result.title.rendered }</a></li>
+            {/if}
+          {/each}
+        </ul>
+      {/if}
+
+  </div>
+</div>
+
+<style>
+</style>
+
+<script>
+  import lunr from 'lunr'
+
+  export default {
+    methods: {
+      search(e) {
+        e.preventDefault();
+        const { searchQuery, index } = this.get();
+        let tokens = searchQuery.split(' ')
+        if (tokens[0]) tokens = tokens.map(token => token + '~1')
+        const lunrResults = index.search(tokens.join(' '))
+        this.set({
+          lunrResults
+        })
+      }
+    },
+    data() {
+      return {
+        lunrResults: [],
+        searchQuery: ''
+      }
+    },
+    async preload({ params, query }) {
+      const res = await this.fetch(`search.json`)
+      const data = await res.json()
+      if (res.status === 200) {
+        return {
+          resources: data.resources,
+          index: lunr.Index.load(data.index)
+        }
+      } else {
+        this.error(res.status, data.message);
+      }
+    },
+    oncreate() {
+      console.log(this.get())
+    },
+    computed: {
+      results:   ({ lunrResults, resources }) => lunrResults.map(result => {
+        const resource = resources.filter(resource => {
+          return resource.id == result.ref
+        })[0]
+        return resource
+      }),
+    }
+  };
+</script>

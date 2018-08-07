@@ -1,6 +1,6 @@
 import api from '../_api'
 
-export async function get(req, res, err) {
+export async function get(req, res, next) {
 	const { slug } = req.params;
   return api(`/wp/v2/posts?slug=${slug}`)
     .then(posts => {
