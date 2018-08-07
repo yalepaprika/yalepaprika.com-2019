@@ -1,8 +1,7 @@
-import fetch from 'node-fetch';
+import api from '../_api'
 
 export async function get(req, res, err) {
-  return fetch('http://159.89.34.209/wp-json/wp/v2/folds')
-    .then(r => r.json())
+  return api('/wp/v2/folds')
     .then(folds => {
       return res.json(folds)
     })
