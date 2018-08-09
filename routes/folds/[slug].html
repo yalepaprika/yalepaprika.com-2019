@@ -53,12 +53,12 @@
     },
     async preload({ params, query }) {
       const res = await this.fetch(`folds/${params.slug}.json`);
-      const data = await res.json();
-      if (res.status === 200) {
-        return { fold: data };
-      } else {
-        this.error(res.status, data.message);
+      if (!res.ok) {
+        const message = await res.text()
+        return this.error(res.status, message);
       }
+      const data = await res.json();
+      return { fold: data };
     },
     oncreate() {
       // this fires when the component has been

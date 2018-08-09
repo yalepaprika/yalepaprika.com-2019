@@ -56,21 +56,21 @@
     },
     async preload({ params, query }) {
       const res = await this.fetch(`search.json`)
+      if (!res.ok) {
+        const message = await res.text()
+        return this.error(res.status, message);
+      }
       const data = await res.json()
-      if (res.status === 200) {
-        return {
-          resources: data.resources,
-          index: lunr.Index.load(data.index)
-        }
-      } else {
-        this.error(res.status, data.message);
+      return {
+        resources: data.resources,
+        index: lunr.Index.load(data.index)
       }
     },
     oncreate() {
       console.log(this.get())
     },
     computed: {
-      results:   ({ lunrResults, resources }) => lunrResults.map(result => {
+      results: ({ lunrResults, resources }) => lunrResults.map(result => {
         const resource = resources.filter(resource => {
           return resource.id == result.ref
         })[0]

@@ -15,14 +15,7 @@ app.get('/gr8.css', function (req, res) {
 })
 
 app.use(serve('assets'))
-app.use(sapper({ manifest }))
 
-app.use(function (err, req, res, next) {
-  if (!err.statusCode) err.statusCode = 500;
-  console.error(err)
-  res.status(err.statusCode).json({
-    error: err.message
-  })
-})
+app.use(sapper({ manifest }))
 
 app.listen(process.env.PORT)

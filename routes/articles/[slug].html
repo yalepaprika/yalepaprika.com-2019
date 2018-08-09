@@ -50,12 +50,12 @@
     },
     async preload({ params, query }) {
       const res = await this.fetch(`articles/${params.slug}.json`);
-      const data = await res.json();
-      if (res.status === 200) {
-        return { article: data };
-      } else {
-        this.error(res.status, data.message);
+      if (!res.ok) {
+        const message = await res.text()
+        return this.error(res.status, message);
       }
+      const data = await res.json();
+      return { article: data };
     },
     oncreate() {
       console.log(this.get())

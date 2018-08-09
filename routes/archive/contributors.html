@@ -16,12 +16,12 @@
   export default {
     async preload({ params, query }) {
       const res = await this.fetch(`/contributors.json`)
-      const data = await res.json()
-      if (res.status === 200) {
-        return { contributors: data }
-      } else {
-        this.error(res.status, data.message);
+      if (!res.ok) {
+        const message = await res.text()
+        return this.error(res.status, message);
       }
+      const data = await res.json()
+      return { contributors: data }
     }
   };
 </script>
