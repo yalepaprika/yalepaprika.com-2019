@@ -1,9 +1,9 @@
 <ul>
   {#each articles as article}
-    <li><a rel=prefetch href="/articles/{article.post_name}">
+    <li><a rel=prefetch href="/articles/{article.slug}">
       {#each article.meta.contributors as contributor}
-        {contributor.post_title},
+        {@html contributor.title.rendered},
       {/each}
-      <span class="fsi">{article.post_title}</span></a></li>
+      <span class="fsi">{@html article.title.rendered}</span></a></li>
   {/each}
 </ul>

@@ -1,15 +1,20 @@
 <svelte:head>
-  <title>{contributor.title.rendered}</title>
+  <title>{decodeHTML(contributor.title.rendered)}</title>
 </svelte:head>
 
-<h1>{contributor.title.rendered}</h1>
+<h1>{@html contributor.title.rendered}</h1>
 
 <style>
 
 </style>
 
 <script>
+  import decodeHTML from '../_helpers/decode-html.js'
+
   export default {
+    helpers: {
+      decodeHTML
+    },
     async preload({ params, query }) {
       const res = await this.fetch(`contributors/${params.slug}.json`);
       if (!res.ok) {

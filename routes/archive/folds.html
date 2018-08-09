@@ -5,7 +5,7 @@
 <ul>
    {#each folds as fold}
       <li>
-        <a rel='prefetch' href='folds/{fold.meta.volume}-{fold.meta.number}'><h1>{fold.title.rendered}</h1></a>
+        <a rel='prefetch' href='folds/{fold.meta.volume}-{fold.meta.number}'><h1>{@html fold.title.rendered}</h1></a>
       </li>
   {/each}
 </ul>

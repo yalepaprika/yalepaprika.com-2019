@@ -16,11 +16,13 @@
     "dayjs": "^1.7.4",
     "express": "^4.16.3",
     "gr8": "^3.1.5",
+    "html2plaintext": "^2.0.1",
     "lunr": "^2.3.1",
     "node-fetch": "^2.2.0",
     "raf": "^3.4.0",
     "sapper": "^0.15.0",
-    "serve-static": "^1.13.2"
+    "serve-static": "^1.13.2",
+    "unescape": "^1.0.1"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.2",

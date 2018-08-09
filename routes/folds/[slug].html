@@ -1,5 +1,5 @@
 <svelte:head>
-  <title>{fold.title.rendered}</title>
+  <title>{decodeHTML(fold.title.rendered)}</title>
 </svelte:head>
 
 <div class="x">
@@ -16,25 +16,25 @@
     <h3>Editors</h3>
     <ul>
       {#each fold.meta.fold_editors as editor}
-        <li><a rel="prefetch" href="/contributors/{editor.post_name}">{editor.post_title}</a></li>
+        <li><a rel="prefetch" href="/contributors/{editor.slug}">{@html editor.title.rendered}</a></li>
       {/each}
     </ul>
     <h3>Graphic Designer</h3>
     <ul>
       {#each fold.meta.graphic_designer as designer}
-        <li><a rel="prefetch" href="/contributors/{designer.post_name}">{designer.post_title}</a></li>
+        <li><a rel="prefetch" href="/contributors/{designer.slug}">{@html designer.title.rendered}</a></li>
       {/each}
     </ul>
     <h3>Positions Editor</h3>
     <ul>
       {#each fold.meta.positions_editor as editor}
-        <li><a rel="prefetch" href="/contributors/{editor.post_name}">{editor.post_title}</a></li>
+        <li><a rel="prefetch" href="/contributors/{editor.slug}">{@html editor.title.rendered}</a></li>
       {/each}
     </ul>
     <h3>Web Editor</h3>
     <ul>
       {#each fold.meta.web_editor as editor}
-        <li><a rel="prefetch" href="/contributors/{editor.post_name}">{editor.post_title}</a></li>
+        <li><a rel="prefetch" href="/contributors/{editor.slug}">{@html editor.title.rendered}</a></li>
       {/each}
     </ul>
     <p>Published on {dateFormat(fold.meta.publication_date)}</p>
@@ -43,10 +43,12 @@
 
 <script>
   import dateFormat from '../_helpers/date-format.js'
+  import decodeHTML from '../_helpers/decode-html.js'
 
   export default {
     helpers: {
-      dateFormat
+      dateFormat,
+      decodeHTML
     },
     components: {
       ArticleList: '../../components/ArticleList.html'

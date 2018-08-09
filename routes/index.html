@@ -1,10 +1,10 @@
 <svelte:head>
-  <title>Sapper project template</title>
+  <title>Paprika!</title>
 </svelte:head>
 
 <div class="x">
-  <div class="c6">{ fold.post_title }</div>
-  <div class="c4">{ @html fold.post_content }</div>
+  <div class="c6">{ @html fold.title.rendered }</div>
+  <div class="c4">{ @html fold.content.rendered }</div>
 </div>
 <div class="psa b0 r0 l0 p2 pt1">
   Footer

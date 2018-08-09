@@ -1,5 +1,5 @@
 <svelte:head>
-  <title>{article.title.rendered}</title>
+  <title>{decodeHTML(article.title.rendered)}</title>
 </svelte:head>
 
 
@@ -9,7 +9,7 @@
       <ul>
         {#each article.meta.contributors as contributor}
           <li>
-            <h2><a rel="prefetch" href="/contributors/{contributor.post_name}">{contributor.post_title}</a></h2>
+            <h2><a rel="prefetch" href="/contributors/{contributor.slug}">{@html contributor.title.rendered}</a></h2>
             <h3>{contributor.meta.degree}, {contributor.meta.graduation_year}</h3>
           </li>
         {/each}
@@ -43,10 +43,12 @@
 
 <script>
   import dateFormat from '../_helpers/date-format.js'
+  import decodeHTML from '../_helpers/decode-html.js'
 
   export default {
     helpers: {
-      dateFormat
+      dateFormat,
+      decodeHTML
     },
     async preload({ params, query }) {
       const res = await this.fetch(`articles/${params.slug}.json`);
