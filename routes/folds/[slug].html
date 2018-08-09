@@ -54,7 +54,16 @@
       ArticleList: '../../components/ArticleList.html'
     },
     async preload({ params, query }) {
-      const res = await this.fetch(`folds/${params.slug}.json`);
+      const maskFields = 'title/rendered,content/rendered' +
+        'meta(' +
+          'volume,number,publication_date,' +
+          'posts(title/rendered,slug,contributors/title/rendered),' +
+          'fold_editors(title/rendered,slug),' +
+          'graphic_designer(title/rendered,slug),' +
+          'positions_editor(title/rendered,slug),' +
+          'web_editor(title/rendered,slug)' +
+        ')'
+      const res = await this.fetch(`folds/${params.slug}.json?fields=${maskFields}`);
       if (!res.ok) {
         const message = await res.text()
         return this.error(res.status, message);

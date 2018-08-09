@@ -55,7 +55,8 @@
       }
     },
     async preload({ params, query }) {
-      const res = await this.fetch(`search.json`)
+      const maskFields = 'resources(id,title/rendered,slug,type,meta(volume,number)),index'
+      const res = await this.fetch(`search.json?fields=${maskFields}`)
       if (!res.ok) {
         const message = await res.text()
         return this.error(res.status, message);

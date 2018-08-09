@@ -11,7 +11,8 @@
 <script>
   export default {
     async preload({ params, query }) {
-      const res = await this.fetch(`/articles.json`)
+      const maskFields = 'title/rendered,slug'
+      const res = await this.fetch(`/articles.json?fields=${maskFields}`)
       if (!res.ok) {
         const message = await res.text()
         return this.error(res.status, message);

@@ -15,9 +15,9 @@
         {/each}
       </ul>
       <h4>Paprika!</h4>
-      {#if article.meta.fold && article.meta.fold.length}
-        <p>vol. {article.meta.fold[0].meta.volume}, no. {article.meta.fold[0].meta.number}</p>
-        <h5>{dateFormat(article.meta.fold[0].meta.publication_date)}</h5>
+      {#if article.meta.fold}
+        <p>vol. {article.meta.fold.meta.volume}, no. {article.meta.fold.meta.number}</p>
+        <h5>{dateFormat(article.meta.fold.meta.publication_date)}</h5>
       {/if}
     {/if}
   </div>
@@ -51,7 +51,12 @@
       decodeHTML
     },
     async preload({ params, query }) {
-      const res = await this.fetch(`articles/${params.slug}.json`);
+      const maskFields = 'title/rendered,content/rendered,' +
+        'meta(' +
+          'contributors(title/rendered,slug,meta(degree,graduation_year)),' +
+          'fold(meta(volume,number,publication_date))'
+        ')'
+      const res = await this.fetch(`articles/${params.slug}.json?fields=${maskFields}`);
       if (!res.ok) {
         const message = await res.text()
         return this.error(res.status, message);

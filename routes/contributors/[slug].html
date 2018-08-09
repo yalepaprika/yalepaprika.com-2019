@@ -16,7 +16,8 @@
       decodeHTML
     },
     async preload({ params, query }) {
-      const res = await this.fetch(`contributors/${params.slug}.json`);
+      const maskFields = 'title/rendered'
+      const res = await this.fetch(`contributors/${params.slug}.json?fields=${maskFields}`);
       if (!res.ok) {
         const message = await res.text()
         return this.error(res.status, message);
