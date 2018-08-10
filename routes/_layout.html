@@ -1,5 +1,8 @@
 <Nav segment={child.segment}/>
 
+{#if preloading}
+<LoadingBar/>
+{/if}
 
 <main class="pt4 pb1 px1 psr">
   <div id="background" class="psa t0 l0 r0"></div>
@@ -35,7 +38,8 @@
 <script>
   export default {
     components: {
-      Nav: '../components/Nav.html'
+      Nav: '../components/Nav.html',
+      LoadingBar: '../components/LoadingBar.html'
     }
   };
 </script>

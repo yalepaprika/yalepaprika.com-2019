@@ -11,19 +11,21 @@
         <input bind:value=searchQuery type=text>
         <button type=submit>Search</button>
       </form>
-      {#if results}
-        <h2>Results</h2>
-        <ul>
-          {#each results as result}
-            {#if result.type == 'post' }
-              <li><a rel='prefetch' href='articles/{result.slug}'>{@html result.title.rendered }</a></li>
-            {:elseif result.type == 'fold' }
-              <li><a rel='prefetch' href='folds/{result.meta.volume}-{result.meta.number}'>{@html result.title.rendered }</a></li>
-            {:else}
-              <li><a rel='prefetch' href='contributors/{result.slug}'>{@html result.title.rendered }</a></li>
-            {/if}
-          {/each}
-        </ul>
+      {#if results.length}
+        <div transition:fly='{y:20}'>
+          <h2>Results</h2>
+          <ul>
+            {#each results as result}
+              {#if result.type == 'post' }
+                <li><a rel='prefetch' href='articles/{result.slug}'>{@html result.title.rendered }</a></li>
+              {:elseif result.type == 'fold' }
+                <li><a rel='prefetch' href='folds/{result.meta.volume}-{result.meta.number}'>{@html result.title.rendered }</a></li>
+              {:else}
+                <li><a rel='prefetch' href='contributors/{result.slug}'>{@html result.title.rendered }</a></li>
+              {/if}
+            {/each}
+          </ul>
+        </div>
       {/if}
 
   </div>
@@ -34,6 +36,7 @@
 
 <script>
   import lunr from 'lunr'
+  import fly from 'svelte-transitions-fly';
 
   export default {
     methods: {
@@ -48,6 +51,7 @@
         })
       }
     },
+    transitions: { fly },
     data() {
       return {
         lunrResults: [],
