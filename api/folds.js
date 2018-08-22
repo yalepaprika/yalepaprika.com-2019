@@ -1,4 +1,4 @@
-import fetch from './fetch'
+import fetch from './utils/fetch'
 import { posts } from './'
 import { contributors } from './'
 import { media } from './'

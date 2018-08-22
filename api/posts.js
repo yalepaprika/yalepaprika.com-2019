@@ -1,4 +1,4 @@
-import fetch from './fetch'
+import fetch from './utils/fetch'
 import { contributors } from './'
 import { folds } from './'
 

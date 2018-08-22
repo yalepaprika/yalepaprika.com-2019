@@ -1,4 +1,4 @@
-import fetch from './fetch'
+import fetch from './utils/fetch'
 
 // TODO: add easy way to get fold position
 export default {
