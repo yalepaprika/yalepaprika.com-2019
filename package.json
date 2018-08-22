@@ -4,8 +4,9 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev",
+    "gr8": "node app/bin/gr8.js > export/gr8.css",
     "build": "sapper build",
-    "export": "sapper export",
+    "export": "sapper export && npm run gr8",
     "start": "node build",
     "cy:run": "cypress run",
     "cy:open": "cypress open",

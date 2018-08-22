@@ -8,7 +8,6 @@ const queue = new TaskQueue(Promise, 5);
 
 
 function _cachedFetch (path) {
-  console.log(path)
   return fetch(`${URL}${path}`)
     .then(res => res.text())
     .then(text => {

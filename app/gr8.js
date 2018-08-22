@@ -1,4 +1,4 @@
-import gr8 from 'gr8'
+const gr8 = require('gr8')
 
 const opts = {
   utils: [],
@@ -79,6 +79,6 @@ opts.utils.push({
 })
 
 
-export default function() {
+module.exports = function() {
   return gr8(opts)
 }
