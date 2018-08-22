@@ -8,7 +8,7 @@ export default {
       .then(post => preparePost(post, embedded))
   },
   list: function (embedded) {
-    return fetch(`/wp/v2/posts`)
+    return fetch(`/wp/v2/posts?per_page=100`)
       .then(posts => Promise.all(posts.map(post => preparePost(post, embedded))))
   },
   search: function (slug, embedded) {
@@ -27,6 +27,7 @@ function preparePost (post, embedded) {
 }
 
 function sanitize (post) {
+  if (!post.meta) post.meta = {}
   if (post.meta.fold && post.meta.fold.length) {
     post.meta.fold = post.meta.fold[0]
   } else {

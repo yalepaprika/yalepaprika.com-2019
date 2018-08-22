@@ -6,10 +6,6 @@ export default {
     return fetch(`/wp/v2/pages/${id}`)
       .then(page => preparePage(page, embedded))
   },
-  list: function (embedded) {
-    return fetch(`/wp/v2/pages`)
-      .then(pages => Promise.all(pages.map(page => preparePage(page, embedded))))
-  },
   search: function (slug, embedded) {
     return fetch(`/wp/v2/pages?slug=${slug}`)
       .then(pages => Promise.all(pages.map(page => preparePage(page, embedded))))
@@ -17,10 +13,16 @@ export default {
 }
 
 function preparePage (page, embedded) {
+  page = sanitize(page)
   return Promise.resolve(page)
     .then(page => {
       return embedded ? fetchEmbedded(page) : page
     })
+}
+
+function sanitize (page) {
+  if (!page.meta) page.meta = {}
+  return page
 }
 
 function fetchEmbedded (page) {

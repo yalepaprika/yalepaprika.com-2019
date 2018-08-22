@@ -10,7 +10,7 @@ function get (id, embedded) {
 }
 
 function list (embedded) {
-  return fetch(`/wp/v2/folds`)
+  return fetch(`/wp/v2/folds?per_page=100`)
     .then(folds => Promise.all(folds.map(fold => prepareFold(fold, embedded))))
 }
 
@@ -31,6 +31,7 @@ function prepareFold (fold, embedded) {
 }
 
 function sanitize (fold) {
+  if (!fold.meta) fold.meta = {}
   if (fold.meta.bulletin) {
     fold.meta.bulletin = (fold.meta.bulletin == '1')
   }

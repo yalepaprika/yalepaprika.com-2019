@@ -8,7 +8,7 @@ export default {
 
   },
   list: function (embedded) {
-    return fetch(`/wp/v2/contributors`)
+    return fetch(`/wp/v2/contributors?per_page=100`)
       .then(contributors => Promise.all(contributors.map(contributor => prepareContributor(contributor, embedded))))
 
   },
@@ -19,10 +19,16 @@ export default {
 }
 
 function prepareContributor (contributor, embedded) {
+  contributor = sanitize(contributor)
   return Promise.resolve(contributor)
     .then(contributor => {
       return embedded ? fetchEmbedded(contributor) : contributor
     })
+}
+
+function sanitize (contributor) {
+  if (!contributor.meta) contributor.meta = {}
+  return contributor
 }
 
 // TODO: figure out related posts
