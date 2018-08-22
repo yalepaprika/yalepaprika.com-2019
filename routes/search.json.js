@@ -1,11 +1,11 @@
 import lunr from 'lunr'
-import api from './_api'
+import { folds, posts, contributors } from '../api'
 
 export async function get(req, res, next) {
   return Promise.all([
-      api('/wp/v2/folds'),
-      api('/wp/v2/posts'),
-      api('/wp/v2/contributors')
+      folds.list(),
+      posts.list(),
+      contributors.list()
     ])
     .then(results => {
       let resources = results[0].concat(results[1]).concat(results[2])

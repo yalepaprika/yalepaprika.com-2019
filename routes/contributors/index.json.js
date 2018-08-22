@@ -1,7 +1,7 @@
-import api from '../_api'
+import { contributors } from '../../api'
 
 export async function get(req, res, next) {
-  return api('/wp/v2/contributors')
+  return contributors.list(true)
     .then(contributors => res.json(contributors))
     .catch(err => next(err))
 }

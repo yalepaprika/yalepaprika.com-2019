@@ -1,8 +1,8 @@
-import api from './_api'
+import { pages } from '../api'
 
 export async function get(req, res, next) {
   const { slug } = req.params;
-  return api(`/wp/v2/pages?slug=about`)
+  return pages.search('about', true)
     .then(pages => {
       if (!pages.length) res.status(404).send('Not found')
       return res.json(pages[0])

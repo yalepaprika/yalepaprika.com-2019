@@ -11,32 +11,42 @@
     {@html fold.content.rendered}
   </div>
   <div class="c4 p1">
-    <h3>Articles</h3>
-    <ArticleList articles={fold.meta.posts} />
-    <h3>Editors</h3>
-    <ul>
-      {#each fold.meta.fold_editors as editor}
-        <li><a rel="prefetch" href="/contributors/{editor.slug}">{@html editor.title.rendered}</a></li>
-      {/each}
-    </ul>
-    <h3>Graphic Designer</h3>
-    <ul>
-      {#each fold.meta.graphic_designer as designer}
-        <li><a rel="prefetch" href="/contributors/{designer.slug}">{@html designer.title.rendered}</a></li>
-      {/each}
-    </ul>
-    <h3>Positions Editor</h3>
-    <ul>
-      {#each fold.meta.positions_editor as editor}
-        <li><a rel="prefetch" href="/contributors/{editor.slug}">{@html editor.title.rendered}</a></li>
-      {/each}
-    </ul>
-    <h3>Web Editor</h3>
-    <ul>
-      {#each fold.meta.web_editor as editor}
-        <li><a rel="prefetch" href="/contributors/{editor.slug}">{@html editor.title.rendered}</a></li>
-      {/each}
-    </ul>
+    {#if fold.meta.posts}
+      <h3>Articles</h3>
+      <ArticleList articles={fold.meta.posts} />
+    {/if}
+    {#if fold.meta.fold_editors}
+      <h3>Editors</h3>
+      <ul>
+        {#each fold.meta.fold_editors as editor}
+          <li><a rel="prefetch" href="/contributors/{editor.slug}">{@html editor.title.rendered}</a></li>
+        {/each}
+      </ul>
+    {/if}
+    {#if fold.meta.graphic_designer}
+      <h3>Graphic Designer</h3>
+      <ul>
+        {#each fold.meta.graphic_designer as designer}
+          <li><a rel="prefetch" href="/contributors/{designer.slug}">{@html designer.title.rendered}</a></li>
+        {/each}
+      </ul>
+    {/if}
+    {#if fold.meta.positions_editor}
+      <h3>Positions Editor</h3>
+      <ul>
+        {#each fold.meta.positions_editor as editor}
+          <li><a rel="prefetch" href="/contributors/{editor.slug}">{@html editor.title.rendered}</a></li>
+        {/each}
+      </ul>
+    {/if}
+    {#if fold.meta.web_editor}
+      <h3>Web Editor</h3>
+      <ul>
+        {#each fold.meta.web_editor as editor}
+          <li><a rel="prefetch" href="/contributors/{editor.slug}">{@html editor.title.rendered}</a></li>
+        {/each}
+      </ul>
+    {/if}
     <p>Published on {dateFormat(fold.meta.publication_date)}</p>
   </div>
 </div>
@@ -54,10 +64,10 @@
       ArticleList: '../../components/ArticleList.html'
     },
     async preload({ params, query }) {
-      const maskFields = 'title/rendered,content/rendered' +
+      const maskFields = 'title/rendered,content/rendered,' +
         'meta(' +
           'volume,number,publication_date,' +
-          'posts(title/rendered,slug,contributors/title/rendered),' +
+          'posts(title/rendered,slug,meta/contributors/title/rendered),' +
           'fold_editors(title/rendered,slug),' +
           'graphic_designer(title/rendered,slug),' +
           'positions_editor(title/rendered,slug),' +

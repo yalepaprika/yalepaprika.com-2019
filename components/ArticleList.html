@@ -1,9 +1,11 @@
 <ul>
   {#each articles as article}
     <li><a rel=prefetch href="/articles/{article.slug}">
-      {#each article.meta.contributors as contributor}
-        {@html contributor.title.rendered},
-      {/each}
+      {#if article.meta.contributors}
+        {#each article.meta.contributors as contributor}
+          <span>{@html contributor.title.rendered},</span>
+        {/each}
+      {/if}
       <span class="fsi">{@html article.title.rendered}</span></a></li>
   {/each}
 </ul>

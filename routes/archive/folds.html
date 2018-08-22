@@ -5,7 +5,7 @@
 <ul>
    {#each folds as fold}
       <li>
-        <a rel='prefetch' href='folds/{fold.meta.volume}-{fold.meta.number}'><h1>{@html fold.title.rendered}</h1></a>
+        <a rel='prefetch' href='folds/{fold.slug}'><h1>{@html fold.title.rendered}</h1></a>
       </li>
   {/each}
 </ul>
@@ -13,7 +13,7 @@
 <script>
   export default {
     async preload({ params, query }) {
-      const maskFields = 'title/rendered,meta(volume,number)'
+      const maskFields = 'title/rendered,slug'
       const res = await this.fetch(`/folds.json?fields=${maskFields}`)
       if (!res.ok) {
         const message = await res.text()
