@@ -2,6 +2,7 @@
 	<title>About</title>
 </svelte:head>
 
+<Title title="About"/>
 <div class="x">
   <div class="c2 p1">
     <h1>About</h1>
@@ -13,6 +14,9 @@
 
 <script>
   export default {
+    components: {
+      Title: '../components/title.html'
+    },
     async preload({ params, query }) {
       const maskFields = 'content/rendered'
       const res = await this.fetch(`/about.json?fields=${maskFields}`)

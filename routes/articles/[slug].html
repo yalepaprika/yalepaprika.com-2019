@@ -2,7 +2,7 @@
   <title>{decodeHTML(article.title.rendered)}</title>
 </svelte:head>
 
-
+<Title title={article.title.rendered}/>
 <div class="x xafs">
   <div class="c2 p1">
     {#if article.meta}
@@ -24,19 +24,11 @@
     {/if}
   </div>
   <div class="c6 p1 content">
-    <h1 class="co2">{@html article.title.rendered}</h1>
     {@html article.content.rendered}
   </div>
 </div>
 
 <style>
-  h1 {
-    font-size: 4rem;
-    line-height: 0.9;
-    font-weight: 400;
-    margin-bottom: 3rem;
-  }
-
   :global(img) {
     display: block;
     margin-bottom: 1rem;
@@ -48,6 +40,9 @@
   import decodeHTML from '../_helpers/decode-html.js'
 
   export default {
+    components: {
+      Title: '../../components/title.html'
+    },
     helpers: {
       dateFormat,
       decodeHTML

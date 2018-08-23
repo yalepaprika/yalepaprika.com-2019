@@ -2,7 +2,7 @@
   <title>{decodeHTML(contributor.title.rendered)}</title>
 </svelte:head>
 
-<h1>{@html contributor.title.rendered}</h1>
+<Title title={contributor.title.rendered}/>
 
 <style>
 
@@ -12,6 +12,9 @@
   import decodeHTML from '../_helpers/decode-html.js'
 
   export default {
+    components: {
+      Title: '../../components/title.html'
+    },
     helpers: {
       decodeHTML
     },

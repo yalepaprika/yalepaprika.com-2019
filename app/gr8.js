@@ -2,6 +2,7 @@ const gr8 = require('gr8')
 
 const opts = {
   utils: [],
+  spacing: [0.5, 1, 2, 3, 4, 5],
   breakpointSelector: 'class'
 }
 

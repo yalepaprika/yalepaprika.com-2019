@@ -1,3 +1,4 @@
+<Title title={titleCase(child.segment)}/>
 <div class="x">
   <div class="c2 p1">
     <ul>
@@ -10,3 +11,14 @@
     <svelte:component this={child.component} {...child.props}/>
   </div>
 </div>
+
+<script>
+  export default {
+    components: {
+      Title: '../../components/title.html'
+    },
+    helpers: {
+      titleCase: ((title) => title.charAt(0).toUpperCase() + title.substr(1))
+    }
+  }
+</script>

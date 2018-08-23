@@ -2,6 +2,7 @@
   <title>Search</title>
 </svelte:head>
 
+<Title title="Search"/>
 <div class="x">
   <div class="c2 p1">
     <h1>Search</h1>
@@ -39,6 +40,9 @@
   import fly from 'svelte-transitions-fly';
 
   export default {
+    components: {
+      Title: '../components/title.html'
+    },
     methods: {
       search(e) {
         e.preventDefault();

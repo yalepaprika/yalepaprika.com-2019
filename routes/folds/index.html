@@ -1,40 +1,51 @@
-  <svelte:head>
+<svelte:head>
   <title>Folds</title>
 </svelte:head>
 
-<div class="x xw">
-   {#each folds as fold}
-    <div class="s5 p1">
-      <div class="fold b1-black x xjc xac">
-        <div class="tac">
-          <a rel='prefetch' href='folds/{fold.slug}'><h1>{@html fold.title.rendered}</h1></a>
-          <h2>vol. {fold.meta.volume}, no. {fold.meta.number}</h2>
-        </div>
-      </div>
-    </div>
-  {/each}
-</div>
+<Title title="Folds"/>
+<Grid layout={layout}/>
 
 <style>
-  .fold {
-    height: 40vh;
-  }
 </style>
 
 <script>
+  import GridLayout from './_grid'
+  import dateSort from '../_helpers/date-sort'
+
   export default {
+    components: {
+      Grid: '../../components/Grid.html',
+      Title: '../../components/title.html'
+    },
     async preload({ params, query }) {
-      const maskFields = 'title/rendered,slug,meta(volume,number)'
-      const res = await this.fetch(`folds.json?fields=${maskFields}`)
+      const maskFields = 'title/rendered,slug,meta'
+      let res = await this.fetch(`folds.json?fields=${maskFields}`)
       if (!res.ok) {
-        const message = await res.text()
+        let message = await res.text()
+        return this.error(res.status, message);
+      }
+      let folds = await res.json()
+      folds.sort(dateSort)
+      res = await this.fetch(`last-modified.json`)
+      if (!res.ok) {
+        message = await res.text()
         return this.error(res.status, message);
       }
       const data = await res.json()
-      return { folds: data }
+      const grid = new GridLayout(data.lastModified)
+      for (let fold of folds) {
+        grid.addFold(fold)
+      }
+      return {
+        layout: grid.layout()
+      }
     },
     oncreate() {
       console.log(this.get())
     }
   };
+
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
 </script>

@@ -6,7 +6,6 @@ import { media } from './'
 function get (id, embedded) {
   return fetch(`/wp/v2/folds/${id}`)
     .then(fold => prepareFold(fold, embedded))
-
 }
 
 function list (embedded) {
