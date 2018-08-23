@@ -3,7 +3,7 @@
 </svelte:head>
 
 <Title title="Folds"/>
-<Grid layout={layout}/>
+<FoldGrid layout={layout}/>
 
 <style>
 </style>
@@ -14,7 +14,7 @@
 
   export default {
     components: {
-      Grid: '../../components/Grid.html',
+      FoldGrid: '../../components/FoldGrid.html',
       Title: '../../components/title.html'
     },
     async preload({ params, query }) {

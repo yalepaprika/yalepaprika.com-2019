@@ -1,3 +1,34 @@
 <svelte:head>
   <title>Paprika!</title>
 </svelte:head>
+
+<Title title={fold.title.rendered}/>
+
+<script>
+  export default {
+    components: {
+      Title: '../components/title.html'
+    },
+    async preload({ params, query }) {
+      const maskFields = 'title/rendered,content/rendered,' +
+        'meta(' +
+          'volume,number,publication_date,fold_front,' +
+          'fold_editors(title/rendered,slug),' +
+          'graphic_designer(title/rendered,slug),' +
+          'positions_editor(title/rendered,slug),' +
+          'web_editor(title/rendered,slug),' +
+          'posts(title/rendered,slug,meta/contributors(title/rendered))' +
+        ')'
+      const res = await this.fetch(`/index.json?fields=${maskFields}`)
+      if (!res.ok) {
+        const message = await res.text()
+        return this.error(res.status, message);
+      }
+      const data = await res.json()
+      return { fold: data }
+    },
+    oncreate() {
+      console.log(this.get())
+    }
+  }
+</script>

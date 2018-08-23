@@ -4,35 +4,37 @@
 
 <Title title="Search"/>
 <div class="x">
-  <div class="c2 p1">
-    <h1>Search</h1>
-  </div>
-  <div class="c4 p1">
-      <form class="mb1" on:submit="search(event)">
-        <input bind:value=searchQuery type=text>
-        <button type=submit>Search</button>
+  <div class="co2 c10">
+      <form class="mb3" on:submit="search(event)">
+        <input class="c8" bind:value=searchQuery type=text>
+        <button type=submit>→</button>
       </form>
-      {#if results.length}
-        <div transition:fly='{y:20}'>
-          <h2>Results</h2>
-          <ul>
-            {#each results as result}
-              {#if result.type == 'post' }
-                <li><a rel='prefetch' href='articles/{result.slug}'>{@html result.title.rendered }</a></li>
-              {:elseif result.type == 'fold' }
-                <li><a rel='prefetch' href='folds/{result.meta.volume}-{result.meta.number}'>{@html result.title.rendered }</a></li>
-              {:else}
-                <li><a rel='prefetch' href='contributors/{result.slug}'>{@html result.title.rendered }</a></li>
-              {/if}
-            {/each}
-          </ul>
-        </div>
-      {/if}
-
   </div>
 </div>
+{#if results.length}
+  <div class="co2 c4" transition:fly='{y:20}'>
+    <ul>
+      {#each results as result}
+        {#if result.type == 'post' }
+          <li><a rel='prefetch' href='articles/{result.slug}'>{@html result.title.rendered }</a></li>
+        {:elseif result.type == 'fold' }
+          <li><a rel='prefetch' href='folds/{result.meta.volume}-{result.meta.number}'>{@html result.title.rendered }</a></li>
+        {:else}
+          <li><a rel='prefetch' href='contributors/{result.slug}'>{@html result.title.rendered }</a></li>
+        {/if}
+      {/each}
+    </ul>
+  </div>
+{/if}
 
 <style>
+  input {
+    border-bottom: 0.2rem solid black;
+    font-size: 4rem;
+    line-height: 0.9;
+    font-weight: 400;
+    margin-right: 1rem;
+  }
 </style>
 
 <script>

@@ -2,6 +2,7 @@ import fetch from './utils/fetch'
 import { posts } from './'
 import { contributors } from './'
 import { media } from './'
+import dateSort from '../routes/_helpers/date-sort'
 
 function get (id, embedded) {
   return fetch(`/wp/v2/folds/${id}`)
@@ -18,15 +19,19 @@ function search (slug, embedded) {
     .then(folds => Promise.all(folds.map(fold => prepareFold(fold, embedded))))
 }
 
-export default { get, list, search }
+function mostRecent (embedded) {
+  return list(false)
+    .then(folds => folds.sort(dateSort)[0])
+    .then(fold => (embedded ? fetchEmbedded(fold) : fold))
+}
+
+export default { get, list, search, mostRecent }
 
 function prepareFold (fold, embedded) {
   fold = sanitize(fold)
   return Promise.resolve(fold)
     .then(fetchMedia)
-    .then(fold => {
-      return embedded ? fetchEmbedded(fold) : fold
-    })
+    .then(fold => (embedded ? fetchEmbedded(fold) : fold))
 }
 
 function sanitize (fold) {
