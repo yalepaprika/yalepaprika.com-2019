@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "sapper dev",
     "gr8": "node app/bin/gr8.js > export/gr8.css",
-    "build": "sapper build",
+    "build": "mkdir dist && cp index.html dist/",
     "export": "sapper export && npm run gr8",
     "start": "node build",
     "cy:run": "cypress run",
