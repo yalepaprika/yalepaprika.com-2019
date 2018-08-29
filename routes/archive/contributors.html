@@ -2,28 +2,26 @@
   <title>Contributors</title>
 </svelte:head>
 
-<Contributors chunks={chunks}/>
+<Contributors {contributors}/>
 
 <style>
 
 </style>
 
 <script>
-  import chunkify from '../_helpers/chunkify.js'
-
   export default {
     components: {
       Contributors: '../../components/Contributors.html'
     },
     async preload({ params, query }) {
-      const maskFields = 'title/rendered,slug'
+      const maskFields = 'title/rendered,slug,meta/organization'
       const res = await this.fetch(`/contributors.json?fields=${maskFields}`)
       if (!res.ok) {
         const message = await res.text()
         return this.error(res.status, message);
       }
       const data = await res.json()
-      return { chunks: chunkify(data, 6, true) }
+      return { contributors: data }
     }
   };
 </script>

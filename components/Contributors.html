@@ -2,10 +2,56 @@
   {#each chunks as chunk}
     <div class="c2 pr1">
       <ul>
-        {#each chunk as contributor}
-          <li><a rel='prefetch' href='contributors/{contributor.slug}'>{@html contributor.title.rendered}</a></li>
+        {#each chunk as item}
+          {#if item.type == 'contributor'}
+            <li><a rel='prefetch' href='contributors/{item.contributor.slug}'>{@html item.contributor.title.rendered}</a></li>
+          {:else}
+            <li class="title">{item.title}</li>
+          {/if}
         {/each}
       </ul>
     </div>
   {/each}
 </div>
+
+<style>
+  li.title:not(:first-child) {
+    margin-top: 1.2rem;
+  }
+</style>
+<script>
+  import chunkify from '../routes/_helpers/chunkify.js'
+  import lastName from '../routes/_helpers/last-name.js'
+
+  export default {
+    computed: {
+      chunks: ({ contributors }) => {
+        let items = contributors.reduce((acc, contributor) => {
+          let lastLetter = ''
+          if (acc.length > 1) {
+            let last = acc[acc.length -1]
+            lastLetter = firstLetter(last.contributor)
+          }
+          let letter = firstLetter(contributor)
+          if (letter !== lastLetter) {
+            acc.push({
+              type: 'title',
+              title: letter
+            })
+          }
+          acc.push({
+            type: 'contributor',
+            contributor: contributor
+          })
+          return acc
+        }, [])
+        return chunkify(items, 6, true)
+      }
+    }
+  }
+
+  function firstLetter (contributor) {
+    let name = contributor.meta.organization ? contributor.title.rendered : lastName(contributor.title.rendered)
+    return name.normalize('NFD').charAt(0).toUpperCase()
+  }
+</script>
