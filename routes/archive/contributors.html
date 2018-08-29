@@ -2,18 +2,19 @@
   <title>Contributors</title>
 </svelte:head>
 
-<ul>
-  {#each contributors as contributor}
-    <li><a rel='prefetch' href='contributors/{contributor.slug}'>{@html contributor.title.rendered}</a></li>
-  {/each}
-</ul>
+<Contributors chunks={chunks}/>
 
 <style>
 
 </style>
 
 <script>
+  import chunkify from '../_helpers/chunkify.js'
+
   export default {
+    components: {
+      Contributors: '../../components/Contributors.html'
+    },
     async preload({ params, query }) {
       const maskFields = 'title/rendered,slug'
       const res = await this.fetch(`/contributors.json?fields=${maskFields}`)
@@ -22,7 +23,7 @@
         return this.error(res.status, message);
       }
       const data = await res.json()
-      return { contributors: data }
+      return { chunks: chunkify(data, 6, true) }
     }
   };
 </script>

@@ -1,16 +1,20 @@
 import fetch from './utils/fetch'
+import lastName from '../routes/_helpers/last-name'
 
 // TODO: add easy way to get fold position
 export default {
   get: function (id, embedded) {
     return fetch(`/wp/v2/contributors/${id}`)
       .then(contributor => prepareContributor(contributor, embedded))
-
   },
   list: function (embedded) {
     return fetch(`/wp/v2/contributors?per_page=100`)
       .then(contributors => Promise.all(contributors.map(contributor => prepareContributor(contributor, embedded))))
-
+      .then(contributors => contributors.sort((a, b) => {
+        var aName = a.meta.organization ? a.title.rendered : lastName(a.title.rendered)
+        var bName = b.meta.organization ? b.title.rendered : lastName(b.title.rendered)
+        return aName.localeCompare(bName);
+      }))
   },
   search: function (slug, embedded) {
     return fetch(`/wp/v2/contributors?slug=${slug}`)

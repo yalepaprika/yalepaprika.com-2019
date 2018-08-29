@@ -10,7 +10,6 @@
 
 <script>
   import GridLayout from './_grid'
-  import dateSort from '../_helpers/date-sort'
 
   export default {
     components: {
@@ -25,7 +24,6 @@
         return this.error(res.status, message);
       }
       let folds = await res.json()
-      folds.sort(dateSort)
       res = await this.fetch(`last-modified.json`)
       if (!res.ok) {
         message = await res.text()

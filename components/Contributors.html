@@ -1,0 +1,11 @@
+<div class="c12 x xjb">
+  {#each chunks as chunk}
+    <div class="c2 pr1">
+      <ul>
+        {#each chunk as contributor}
+          <li><a rel='prefetch' href='contributors/{contributor.slug}'>{@html contributor.title.rendered}</a></li>
+        {/each}
+      </ul>
+    </div>
+  {/each}
+</div>
