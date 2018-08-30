@@ -8,7 +8,7 @@
     <h1>{@html fold.title.rendered}</h1>
     <h2>{fold.meta.volume}-{fold.meta.number}</h2>
   </div>
-  <div class="c4 p1">
+  <div class="c4 p1 content">
     {@html fold.content.rendered}
   </div>
   <div class="c4 p1">
@@ -55,6 +55,14 @@
   </div>
 </div>
 
+<style>
+  :global(.content img) {
+    display: block;
+    margin-bottom: 1rem;
+    width: 100%;
+    height: auto;
+  }
+</style>
 <script>
   import dateFormat from '../_helpers/date-format.js'
   import decodeHTML from '../_helpers/decode-html.js'
@@ -66,7 +74,7 @@
     },
     components: {
       ArticleList: '../../components/ArticleList.html',
-      Title: '../../components/title.html'
+      Title: '../../components/Title.html'
     },
     async preload({ params, query }) {
       const maskFields = 'title/rendered,content/rendered,' +

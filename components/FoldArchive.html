@@ -3,7 +3,7 @@
     <tr>
       <td>{fold.meta.volume}-{fold.meta.number}</td>
       <td><a href="/folds/{fold.slug}">{@html fold.title.rendered}</a></td>
-      <td class="c6">
+      <td class="sm-c6 dn sm-dtc">
       {#if fold.meta.fold_editors}
         {#each fold.meta.fold_editors as editor, i}
           <span>
@@ -13,7 +13,7 @@
         {/each}
       {/if}
       </td>
-      <td class="c2">{dateFormat(fold.meta.publication_date)}</td>
+      <td class="sm-c2">{dateFormat(fold.meta.publication_date)}</td>
     </tr>
   {/each}
 </table>

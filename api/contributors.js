@@ -47,3 +47,5 @@ function fetchEmbedded (contributor) {
   // }
   return Promise.all(embedded).then(() => contributor)
 }
+
+

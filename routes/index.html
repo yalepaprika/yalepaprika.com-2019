@@ -1,13 +1,40 @@
 <svelte:head>
   <title>Paprika!</title>
 </svelte:head>
+  <div class="psf co1 mt2 c4 t0 l0 z1">
+    <div class="w100 oh bgc-white">
+      <img class="mx100 fold-front" src="{fold.meta.fold_front.media_details.sizes.full.source_url}">
+    </div>
+  </div>
+<div class="x text">
+  <Title title={fold.title.rendered}/>
+</div>
+<div class="x psr z2 text">
+  <div class="co2 c4 posts">
+    {#if fold.meta.posts}
+      <h3>Articles</h3>
+      <ArticleList articles={fold.meta.posts} />
+    {/if}
+  </div>
+  <div class="c4">
+    {@html fold.content.rendered}
+  </div>
+</div>
 
-<Title title={fold.title.rendered}/>
+<style>
+  .posts {
+    margin-top: 15rem;
+  }
+  .fold-front {
+    opacity: 0.6;
+  }
+</style>
 
 <script>
   export default {
     components: {
-      Title: '../components/title.html'
+      Title: '../components/Title.html',
+      ArticleList: '../components/ArticleList.html'
     },
     async preload({ params, query }) {
       const maskFields = 'title/rendered,content/rendered,' +

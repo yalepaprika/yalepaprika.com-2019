@@ -30,9 +30,11 @@
 </div>
 
 <style>
-  :global(img) {
+  :global(.content img) {
     display: block;
     margin-bottom: 1rem;
+    width: 100%;
+    height: auto;
   }
 </style>
 
@@ -42,7 +44,7 @@
 
   export default {
     components: {
-      Title: '../../components/title.html'
+      Title: '../../components/Title.html'
     },
     helpers: {
       dateFormat,

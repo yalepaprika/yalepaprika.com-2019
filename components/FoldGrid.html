@@ -5,7 +5,7 @@
         <svelte:component this={getSpread(item.spread)} media={item.fold.meta.fold_front}/>
       </div>
       {#if !item.fold.meta.bulletin}
-        <h2>{item.fold.meta.volume}-{item.fold.meta.number}</h2>
+        <h2>{item.fold.meta.volume}-{item.fold.meta.number} {@html item.fold.title.rendered}</h2>
       {:else}
         <h2>{item.fold.meta.volume}-Bulletin</h2>
       {/if}
