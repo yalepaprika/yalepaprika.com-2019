@@ -5,10 +5,64 @@
 <Title title="About"/>
 <div class="x">
   <div class="c2 p1">
-    <h1>About</h1>
+    <ul>
+      <li><a rel="prefetch" href="/about">About</a></li>
+      <li><a rel="prefetch" href="/support">Support</a></li>
+      <li><a rel="prefetch" href="/search">Search</a></li>
+    </ul>
   </div>
   <div class="c4 p1">
     {@html page.content.rendered}
+  </div>
+  <div class="c4 p1">
+    {#if page.meta.coordinating_editors}
+      <h3>Coordinating Editors</h3>
+      <ul>
+        {#each page.meta.coordinating_editors as editor}
+          <li><a rel="prefetch" href="/contributors/{editor.slug}">{@html editor.title.rendered}</a></li>
+        {/each}
+      </ul>
+    {/if}
+    {#if page.meta.publishers}
+      <h3>Publishers</h3>
+      <ul>
+        {#each page.meta.publishers as publisher}
+          <li><a rel="prefetch" href="/contributors/{publisher.slug}">{@html publisher.title.rendered}</a></li>
+        {/each}
+      </ul>
+    {/if}
+    {#if page.meta.web_editor}
+      <h3>Web Editor</h3>
+      <ul>
+        {#each page.meta.web_editor as editor}
+          <li><a rel="prefetch" href="/contributors/{editor.slug}">{@html editor.title.rendered}</a></li>
+        {/each}
+      </ul>
+    {/if}
+    {#if page.meta.graphic_design_liason}
+      <h3>Graphic Designer Liason</h3>
+      <ul>
+        {#each page.meta.graphic_design_liason as designer}
+          <li><a rel="prefetch" href="/contributors/{designer.slug}">{@html designer.title.rendered}</a></li>
+        {/each}
+      </ul>
+    {/if}
+    {#if page.meta.site_design}
+      <h3>Site Design</h3>
+      <ul>
+        {#each page.meta.site_design as designer}
+          <li><a rel="prefetch" href="/contributors/{designer.slug}">{@html designer.title.rendered}</a></li>
+        {/each}
+      </ul>
+    {/if}
+    {#if page.meta.site_development}
+      <h3>Site Development</h3>
+      <ul>
+        {#each page.meta.site_development as developer}
+          <li><a rel="prefetch" href="/contributors/{developer.slug}">{@html developer.title.rendered}</a></li>
+        {/each}
+      </ul>
+    {/if}
   </div>
 </div>
 
@@ -19,7 +73,7 @@
     },
     async preload({ params, query }) {
       const maskFields = 'content/rendered'
-      const res = await this.fetch(`/about.json?fields=${maskFields}`)
+      const res = await this.fetch(`/about.json`)
       if (!res.ok) {
         const message = await res.text()
         return this.error(res.status, message);

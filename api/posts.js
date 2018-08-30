@@ -1,6 +1,7 @@
 import fetch from './utils/fetch'
 import { contributors } from './'
 import { folds } from './'
+import dateSort from '../routes/_helpers/date-sort'
 
 export default {
   get: function (id, embedded) {
@@ -10,6 +11,8 @@ export default {
   list: function (embedded) {
     return fetch(`/wp/v2/posts?per_page=100`)
       .then(posts => Promise.all(posts.map(post => preparePost(post, embedded))))
+      .then(posts => posts.filter(post => post.meta.fold && !post.meta.fold.bulletin))
+      .then(posts => posts.sort((a, b) => dateSort(a.meta.fold, b.meta.fold)))
   },
   search: function (slug, embedded) {
     return fetch(`/wp/v2/posts?slug=${slug}`)

@@ -2,16 +2,15 @@
   <title>Articles</title>
 </svelte:head>
 
-<ul>
-  {#each articles as article}
-    <li><a rel='prefetch' href='articles/{article.slug}'>{@html article.title.rendered}</a></li>
-  {/each}
-</ul>
+<ArticleArchive {articles}/>
 
 <script>
   export default {
+    components: {
+      ArticleArchive: '../../components/ArticleArchive.html'
+    },
     async preload({ params, query }) {
-      const maskFields = 'title/rendered,slug'
+      const maskFields = 'title/rendered,slug,meta'
       const res = await this.fetch(`/articles.json?fields=${maskFields}`)
       if (!res.ok) {
         const message = await res.text()

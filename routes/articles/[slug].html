@@ -11,14 +11,15 @@
           {#each article.meta.contributors as contributor}
             <li>
               <h2><a rel="prefetch" href="/contributors/{contributor.slug}">{@html contributor.title.rendered}</a></h2>
-              <h3>{contributor.meta.degree}, {contributor.meta.graduation_year}</h3>
+              {#if contributor.meta.degree && contributor.meta.graduation_year}
+                <h3>{contributor.meta.degree}, {contributor.meta.graduation_year}</h3>
+              {/if}
             </li>
           {/each}
         </ul>
       {/if}
-      <h4>Paprika!</h4>
       {#if article.meta.fold}
-        <p>vol. {article.meta.fold.meta.volume}, no. {article.meta.fold.meta.number}</p>
+        <p>{article.meta.fold.meta.volume}-{article.meta.fold.meta.number}</p>
         <h5>{dateFormat(article.meta.fold.meta.publication_date)}</h5>
       {/if}
     {/if}

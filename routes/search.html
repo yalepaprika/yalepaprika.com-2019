@@ -4,28 +4,54 @@
 
 <Title title="Search"/>
 <div class="x">
-  <div class="co2 c10">
-      <form class="mb3" on:submit="search(event)">
-        <input class="c8" bind:value=searchQuery type=text>
-        <button type=submit>→</button>
-      </form>
-  </div>
-</div>
-{#if results.length}
-  <div class="co2 c10 results" transition:fly='{y:20}'>
+  <div class="c2 p1">
     <ul>
-      {#each results as result}
-        {#if result.type == 'post' }
-          <li><h1><a rel='prefetch' href='articles/{result.slug}'>{@html result.title.rendered }</a></h1></li>
-        {:elseif result.type == 'fold' }
-          <li><h1><a rel='prefetch' href='folds/{result.meta.volume}-{result.meta.number}'>{@html result.title.rendered }</a></h1></li>
-        {:else}
-          <li><h1><a rel='prefetch' href='contributors/{result.slug}'>{@html result.title.rendered }</a></h1></li>
-        {/if}
-      {/each}
+      <li><a rel="prefetch" href="/about">About</a></li>
+      <li><a rel="prefetch" href="/support">Support</a></li>
+      <li><a rel="prefetch" href="/search">Search</a></li>
     </ul>
   </div>
-{/if}
+  <div class="c10 p1">
+    <form class="mb3" on:submit="search(event)">
+      <input class="c8" bind:value=searchQuery type=text>
+      <button type=submit>→</button>
+    </form>
+    {#if resultsLength(results)}
+      <div class="results c12 x" transition:fly='{y:20}'>
+        {#if results.post && results.post.length}
+        <div class="c4">
+          <h1>Articles</h1>
+          <ul>
+            {#each results.post as result}
+              <li><h1><a rel='prefetch' href='articles/{result.slug}'>{@html result.title.rendered }</a></h1></li>
+            {/each}
+          </ul>
+        </div>
+        {/if}
+        {#if results.fold && results.fold.length}
+        <div class="c4">
+          <h1>Folds</h1>
+          <ul>
+            {#each results.fold as result}
+              <li><h1><a rel='prefetch' href='folds/{result.meta.volume}-{result.meta.number}'>{@html result.title.rendered }</a></h1></li>
+            {/each}
+          </ul>
+        </div>
+        {/if}
+        {#if results.contributor && results.contributor.length}
+        <div class="c4">
+          <h1>Contributors</h1>
+          <ul>
+            {#each results.contributor as result}
+              <li><h1><a rel='prefetch' href='contributors/{result.slug}'>{@html result.title.rendered }</a></h1></li>
+            {/each}
+          </ul>
+        </div>
+        {/if}
+      </div>
+    {/if}
+  </div>
+</div>
 
 <style>
   input {
@@ -42,6 +68,15 @@
   import fly from 'svelte-transitions-fly';
 
   export default {
+    helpers: {
+      resultsLength: (results) => {
+        if (!results) return false
+        let out = (results.post && results.post.length) ||
+          (results.fold && results.fold.length) ||
+          (results.contributor && results.contributor.length)
+        return out
+      }
+    },
     components: {
       Title: '../components/title.html'
     },
@@ -81,12 +116,20 @@
       console.log(this.get())
     },
     computed: {
-      results: ({ lunrResults, resources }) => lunrResults.map(result => {
-        const resource = resources.filter(resource => {
-          return resource.id == result.ref
-        })[0]
-        return resource
-      }),
+      results: ({ lunrResults, resources }) => {
+        resources = lunrResults.map(result => {
+          const resource = resources.filter(resource => {
+            return resource.id == result.ref
+          })[0]
+          return resource
+        })
+        let out = {}
+        for (let resource of resources) {
+          if (!out[resource.type]) out[resource.type] = []
+          out[resource.type].push(resource)
+        }
+        return out
+      }
     }
   };
 </script>

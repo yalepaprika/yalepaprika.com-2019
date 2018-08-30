@@ -6,7 +6,7 @@
 <div class="x">
   <div class="c2 p1">
     <h1>{@html fold.title.rendered}</h1>
-    <h2>vol. {fold.meta.volume}, no. {fold.meta.number}</h2>
+    <h2>{fold.meta.volume}-{fold.meta.number}</h2>
   </div>
   <div class="c4 p1">
     {@html fold.content.rendered}
@@ -84,6 +84,7 @@
         return this.error(res.status, message);
       }
       const data = await res.json();
+      console.log(data.meta.posts)
       return { fold: data };
     },
     oncreate() {

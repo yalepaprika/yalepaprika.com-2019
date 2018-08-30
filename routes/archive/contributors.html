@@ -2,7 +2,7 @@
   <title>Contributors</title>
 </svelte:head>
 
-<Contributors {contributors}/>
+<ContributorsArchive {contributors}/>
 
 <style>
 
@@ -11,7 +11,7 @@
 <script>
   export default {
     components: {
-      Contributors: '../../components/Contributors.html'
+      ContributorsArchive: '../../components/ContributorsArchive.html'
     },
     async preload({ params, query }) {
       const maskFields = 'title/rendered,slug,meta/organization'

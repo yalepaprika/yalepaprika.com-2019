@@ -1,0 +1,32 @@
+<table class="c12">
+  {#each folds as fold}
+    <tr>
+      <td>{fold.meta.volume}-{fold.meta.number}</td>
+      <td><a href="/folds/{fold.slug}">{@html fold.title.rendered}</a></td>
+      <td class="c6">
+      {#if fold.meta.fold_editors}
+        {#each fold.meta.fold_editors as editor, i}
+          <span>
+            <a href="/contributors/{editor.slug}">{@html editor.title.rendered}{#if i < fold.meta.fold_editors.length - 1},{/if}</a>
+            {' '}
+        </span>
+        {/each}
+      {/if}
+      </td>
+      <td class="c2">{dateFormat(fold.meta.publication_date)}</td>
+    </tr>
+  {/each}
+</table>
+
+<script>
+  import dateFormat from '../routes/_helpers/date-format.js'
+
+  export default {
+    helpers: {
+      dateFormat
+    },
+    oncreate: function () {
+      console.log(this.get())
+    }
+  }
+</script>

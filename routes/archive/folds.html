@@ -2,18 +2,15 @@
   <title>Folds</title>
 </svelte:head>
 
-<ul>
-   {#each folds as fold}
-      <li>
-        <a rel='prefetch' href='folds/{fold.slug}'><h1>{@html fold.title.rendered}</h1></a>
-      </li>
-  {/each}
-</ul>
+<FoldArchive {folds}/>
 
 <script>
   export default {
+    components: {
+      FoldArchive: '../../components/FoldArchive.html'
+    },
     async preload({ params, query }) {
-      const maskFields = 'title/rendered,slug'
+      const maskFields = 'title/rendered,slug,meta(volume,number,fold_editors,publication_date)'
       const res = await this.fetch(`/folds.json?fields=${maskFields}`)
       if (!res.ok) {
         const message = await res.text()

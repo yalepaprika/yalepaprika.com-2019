@@ -3,7 +3,7 @@
 </svelte:head>
 
 <Title title="Folds"/>
-<FoldGrid layout={layout}/>
+<FoldGrid {layout}/>
 
 <style>
 </style>
@@ -32,7 +32,11 @@
       const data = await res.json()
       const grid = new GridLayout(data.lastModified)
       for (let fold of folds) {
-        grid.addFold(fold)
+        if (fold.meta.fold_front) {
+          grid.addFold(fold)
+        } else {
+          console.log(`Fold ${fold.title.rendered} missing fold front image.`)
+        }
       }
       return {
         layout: grid.layout()
