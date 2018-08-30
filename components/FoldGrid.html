@@ -2,13 +2,17 @@
    {#each layout.items as item, i}
     <div class="psa" style="left: {layout.slots[i * 2]}vw; top: {layout.slots[i * 2 + 1]}vw; width: {item._width}vw; height: {item._height}vw; padding: {margin * item._height}vw {margin * item._width}vw;">
       <div class="mb0-5 w100 h100">
-        <svelte:component this={getSpread(item.spread)} media={item.fold.meta.fold_front}/>
+        <a href="/folds/{item.fold.slug}"><svelte:component this={getSpread(item.spread)} media={item.fold.meta.fold_front}/></a>
       </div>
-      {#if !item.fold.meta.bulletin}
-        <h2>{item.fold.meta.volume}-{item.fold.meta.number} {@html item.fold.title.rendered}</h2>
-      {:else}
-        <h2>{item.fold.meta.volume}-Bulletin</h2>
-      {/if}
+      <div class="dn sm-db">
+        <a href="/folds/{item.fold.slug}">
+          {#if !item.fold.meta.bulletin}
+            <h2>{item.fold.meta.volume}-{item.fold.meta.number} {@html item.fold.title.rendered}</h2>
+          {:else}
+            <h2>{item.fold.meta.volume}-Bulletin</h2>
+          {/if}
+        </a>
+      </div>
     </div>
   {/each}
 </div>

@@ -3,8 +3,8 @@
 </svelte:head>
 
 <Title title={article.title.rendered}/>
-<div class="x xafs">
-  <div class="c2 p1">
+<div class="x xafs xw">
+  <div class="c12 sm-c2 p1">
     {#if article.meta}
       {#if article.meta.contributors}
         <ul>
@@ -24,7 +24,7 @@
       {/if}
     {/if}
   </div>
-  <div class="c6 p1 content">
+  <div class="c12 sm-c6 p1 content">
     {@html article.content.rendered}
   </div>
 </div>

@@ -3,14 +3,14 @@
 </svelte:head>
 
 <Title title={contributor.title.rendered}/>
-<div class="x">
-  <div class="c2 p1">
+<div class="x xw">
+  <div class="c12 sm-c2 p1">
     <h2>{@html contributor.title.rendered}</h2>
     {#if contributor.meta.degree && contributor.meta.graduation_year}
       <h3>{contributor.meta.degree}, {contributor.meta.graduation_year}</h3>
     {/if}
   </div>
-  <div class="c4 p1">
+  <div class="c12 sm-c4 p1">
 <!--     <h1>Articles</h1>
     <ul>
       {#each results.fold as result}

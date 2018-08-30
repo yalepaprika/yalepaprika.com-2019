@@ -4,22 +4,22 @@
 
 <Title title="Search"/>
 <div class="x">
-  <div class="c2 p1">
+  <div class="dn sm-db c2 p1">
     <ul>
       <li><a rel="prefetch" href="/about">About</a></li>
       <li><a rel="prefetch" href="/support">Support</a></li>
       <li><a rel="prefetch" href="/search">Search</a></li>
     </ul>
   </div>
-  <div class="c10 p1">
+  <div class="c12 sm-c10 p1">
     <form class="mb3" on:submit="search(event)">
-      <input class="c8" bind:value=searchQuery type=text>
+      <input class="c10 sm-c8" bind:value=searchQuery type=text>
       <button type=submit>→</button>
     </form>
     {#if resultsLength(results)}
-      <div class="results c12 x" transition:fly='{y:20}'>
+      <div class="results c12 xw" transition:fly='{y:20}'>
         {#if results.post && results.post.length}
-        <div class="c4">
+        <div class="c12 sm-c4">
           <h1>Articles</h1>
           <ul>
             {#each results.post as result}
@@ -29,7 +29,7 @@
         </div>
         {/if}
         {#if results.fold && results.fold.length}
-        <div class="c4">
+        <div class="c12 sm-c4">
           <h1>Folds</h1>
           <ul>
             {#each results.fold as result}
@@ -39,7 +39,7 @@
         </div>
         {/if}
         {#if results.contributor && results.contributor.length}
-        <div class="c4">
+        <div class="c12 sm-c4">
           <h1>Contributors</h1>
           <ul>
             {#each results.contributor as result}

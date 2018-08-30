@@ -3,18 +3,18 @@
 </svelte:head>
 
 <Title title="About"/>
-<div class="x">
-  <div class="c2 p1">
+<div class="x xw">
+  <div class="dn sm-db c2 p1">
     <ul>
       <li><a rel="prefetch" href="/about">About</a></li>
       <li><a rel="prefetch" href="/support">Support</a></li>
       <li><a rel="prefetch" href="/search">Search</a></li>
     </ul>
   </div>
-  <div class="c4 p1">
+  <div class="c12 sm-c4 p1">
     {@html page.content.rendered}
   </div>
-  <div class="c4 p1">
+  <div class="c12 sm-c4 p1">
     {#if page.meta.coordinating_editors}
       <h3>Coordinating Editors</h3>
       <ul>
