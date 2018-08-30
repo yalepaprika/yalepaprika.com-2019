@@ -1,18 +1,18 @@
 <table class="c12">
   {#each articles as article}
     <tr>
-      <td><a href="/articles/{article.slug}" class="fsi">{@html article.title.rendered}</a></td>
+      <td><a rel="prefetch" href="/articles/{article.slug}" class="fsi">{@html article.title.rendered}</a></td>
       <td class="sm-c3 dn sm-dtc">
       {#if article.meta.contributors}
         {#each article.meta.contributors as contributor, i}
           <span>
-            <a href="/contributors/{contributor.slug}">{@html contributor.title.rendered}{#if i < article.meta.contributors.length - 1},{/if}</a>
+            <a rel="prefetch" href="/contributors/{contributor.slug}">{@html contributor.title.rendered}{#if i < article.meta.contributors.length - 1},{/if}</a>
             {' '}
         </span>
         {/each}
       {/if}
       </td>
-      <td class="sm-c3 dn sm-dtc"><a href="/folds/{article.meta.fold.slug}">{article.meta.fold.title.rendered}</a></td>
+      <td class="sm-c3 dn sm-dtc"><a rel="prefetch" href="/folds/{article.meta.fold.slug}">{article.meta.fold.title.rendered}</a></td>
       <td class="sm-c2 dn sm-dtc">{dateFormat(article.meta.fold.meta.publication_date)}</td>
 
     </tr>

@@ -10,7 +10,11 @@
       FoldArchive: '../../components/FoldArchive.html'
     },
     async preload({ params, query }) {
-      const maskFields = 'title/rendered,slug,meta(volume,number,fold_editors,publication_date)'
+      const maskFields = 'title/rendered,slug,' +
+      'meta(' +
+        'volume,number,publication_date,' +
+        'fold_editors(title/rendered,slug)' +
+      ')'
       const res = await this.fetch(`/folds.json?fields=${maskFields}`)
       if (!res.ok) {
         const message = await res.text()

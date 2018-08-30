@@ -43,7 +43,10 @@
       decodeHTML
     },
     async preload({ params, query }) {
-      const maskFields = 'title/rendered,meta'
+      const maskFields = 'title/rendered,' +
+      'meta(' +
+        'degree,graduation_year' +
+      ')'
       const res = await this.fetch(`contributors/${params.slug}.json?fields=${maskFields}`);
       if (!res.ok) {
         const message = await res.text()

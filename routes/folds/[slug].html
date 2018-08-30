@@ -50,7 +50,9 @@
     {/if}
     <p>Published on {dateFormat(fold.meta.publication_date)}</p>
     {#if fold.meta.fold_front}
-      {@html fold.meta.fold_front.description.rendered}
+      <div class="w100 oh bgc-white">
+        <img class="mx100 fold-front" src="{fold.meta.fold_front.media_details.sizes.full.source_url}">
+      </div>
     {/if}
   </div>
 </div>
@@ -79,7 +81,8 @@
     async preload({ params, query }) {
       const maskFields = 'title/rendered,content/rendered,' +
         'meta(' +
-          'volume,number,publication_date,fold_front,' +
+          'volume,number,publication_date,' +
+          'fold_front/media_details/sizes/full/source_url,' +
           'fold_editors(title/rendered,slug),' +
           'graphic_designer(title/rendered,slug),' +
           'positions_editor(title/rendered,slug),' +

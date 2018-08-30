@@ -17,7 +17,16 @@
       Title: '../../components/Title.html'
     },
     async preload({ params, query }) {
-      const maskFields = 'title/rendered,slug,meta'
+      const maskFields = 'title/rendered,slug,' +
+        'meta(' +
+          'volume,number,bulletin,creases,' +
+          'fold_front/media_details(height,width,sizes/full/source_url),' +
+          'fold_editors(title/rendered,slug),' +
+          'graphic_designer(title/rendered,slug),' +
+          'positions_editor(title/rendered,slug),' +
+          'web_editor(title/rendered,slug),' +
+          'posts(title/rendered,slug,meta/contributors(title/rendered))' +
+        ')'
       let res = await this.fetch(`folds.json?fields=${maskFields}`)
       if (!res.ok) {
         let message = await res.text()

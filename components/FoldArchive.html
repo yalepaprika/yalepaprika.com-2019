@@ -2,12 +2,12 @@
   {#each folds as fold}
     <tr>
       <td>{fold.meta.volume}-{fold.meta.number}</td>
-      <td><a href="/folds/{fold.slug}">{@html fold.title.rendered}</a></td>
+      <td><a rel="prefetch" href="/folds/{fold.slug}">{@html fold.title.rendered}</a></td>
       <td class="sm-c6 dn sm-dtc">
       {#if fold.meta.fold_editors}
         {#each fold.meta.fold_editors as editor, i}
           <span>
-            <a href="/contributors/{editor.slug}">{@html editor.title.rendered}{#if i < fold.meta.fold_editors.length - 1},{/if}</a>
+            <a rel="prefetch" href="/contributors/{editor.slug}">{@html editor.title.rendered}{#if i < fold.meta.fold_editors.length - 1},{/if}</a>
             {' '}
         </span>
         {/each}

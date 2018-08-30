@@ -2,10 +2,10 @@
    {#each layout.items as item, i}
     <div class="psa" style="left: {layout.slots[i * 2]}vw; top: {layout.slots[i * 2 + 1]}vw; width: {item._width}vw; height: {item._height}vw; padding: {margin * item._height}vw {margin * item._width}vw;">
       <div class="mb0-5 w100 h100">
-        <a href="/folds/{item.fold.slug}"><svelte:component this={getSpread(item.spread)} media={item.fold.meta.fold_front}/></a>
+        <a rel="prefetch" href="/folds/{item.fold.slug}"><svelte:component this={getSpread(item.spread)} media={item.fold.meta.fold_front}/></a>
       </div>
       <div class="dn sm-db">
-        <a href="/folds/{item.fold.slug}">
+        <a rel="prefetch" href="/folds/{item.fold.slug}">
           {#if !item.fold.meta.bulletin}
             <h2>{item.fold.meta.volume}-{item.fold.meta.number} {@html item.fold.title.rendered}</h2>
           {:else}

@@ -72,8 +72,16 @@
       Title: '../components/Title.html'
     },
     async preload({ params, query }) {
-      const maskFields = 'content/rendered'
-      const res = await this.fetch(`/about.json`)
+      const maskFields = 'content/rendered,' +
+        'meta(' +
+          'coordinating_editors(title/rendered,slug),' +
+          'publishers(title/rendered,slug),' +
+          'web_editor(title/rendered,slug),' +
+          'graphic_design_liason(title/rendered,slug),' +
+          'site_design(title/rendered,slug),' +
+          'site_development(title/rendered,slug)' +
+        ')'
+      const res = await this.fetch(`/about.json?fields=${maskFields}`)
       if (!res.ok) {
         const message = await res.text()
         return this.error(res.status, message);

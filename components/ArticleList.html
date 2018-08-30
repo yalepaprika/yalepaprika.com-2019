@@ -1,6 +1,6 @@
 <ul>
   {#each articles as article}
-    <li><a rel=prefetch href="/articles/{article.slug}">
+    <li><a rel="prefetch" href="/articles/{article.slug}">
       {#if article.meta.contributors}
         {#each article.meta.contributors as contributor}
           <span>{@html contributor.title.rendered},{' '}</span>
