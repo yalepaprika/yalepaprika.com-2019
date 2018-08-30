@@ -95,14 +95,7 @@
         return this.error(res.status, message);
       }
       const data = await res.json();
-      console.log(data.meta.posts)
       return { fold: data };
-    },
-    oncreate() {
-      // this fires when the component has been
-      // rendered to the DOM
-      console.log('in oncreate', this.get());
     }
-
   };
 </script>

@@ -112,9 +112,6 @@
         index: lunr.Index.load(data.index)
       }
     },
-    oncreate() {
-      console.log(this.get())
-    },
     computed: {
       results: ({ lunrResults, resources }) => {
         resources = lunrResults.map(result => {
