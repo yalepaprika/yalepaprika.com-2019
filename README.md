@@ -1,1 +1,1 @@
-<p align="center">yalepaprika.com</p>
+<p align="center">yalepaprika.com</p> 
