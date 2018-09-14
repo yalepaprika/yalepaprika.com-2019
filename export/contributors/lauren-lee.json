@@ -1,1 +1,1 @@
-request to http://159.89.34.209/wp-json/wp/v2/contributors?slug=lauren-lee failed, reason: connect ETIMEDOUT 159.89.34.209:80
+{"title":{"rendered":"Lauren Lee"},"meta":{"degree":"M.F.A.","graduation_year":"2018"}}

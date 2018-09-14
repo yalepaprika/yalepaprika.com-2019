@@ -18,11 +18,11 @@ img {
   vertical-align: middle;
 }
 
-ul, ol, li { 
+ul, ul li { 
   list-style: none;
 }
 
-li {
+ul li {
   margin-left: 2.4rem;
   text-indent: -2.4rem;
 }
