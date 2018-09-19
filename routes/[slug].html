@@ -1,0 +1,7 @@
+<script>
+  export default {
+    preload({ params, query }) {
+      return this.redirect(301, `articles/${params.slug}`)
+    }
+  }
+</script>
