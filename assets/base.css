@@ -43,3 +43,9 @@ p {
 td {
   vertical-align: top;
 }
+
+hr {
+  border: none;
+  border-bottom: 0.1rem solid black;
+  margin-bottom: 1.2rem;
+}
