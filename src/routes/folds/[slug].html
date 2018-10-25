@@ -12,6 +12,10 @@
     {@html fold.content.rendered}
   </div>
   <div class="c12 sm-c4 p1">
+    {#if fold.meta.website}
+      <h3>Website</h3>
+      <p><a href="{fold.meta.website}" rel="external">Visit fold website ↗</a></p>
+    {/if}
     {#if fold.meta.posts}
       <h3>Articles</h3>
       <ArticleList articles={fold.meta.posts} />

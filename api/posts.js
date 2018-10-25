@@ -15,6 +15,7 @@ export default {
       .then(posts => posts.sort((a, b) => dateSort(a.meta.fold, b.meta.fold)))
   },
   search: function (slug, embedded) {
+    slug = encodeURIComponent(slug)
     return fetch(`/wp/v2/posts?slug=${slug}`)
       .then(posts => Promise.all(posts.map(post => preparePost(post, embedded))))
   }
