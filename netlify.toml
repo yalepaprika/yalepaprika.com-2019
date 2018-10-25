@@ -2,7 +2,7 @@
   id = "5811be44-0095-4351-9776-65ba7447d70c"
 
 [build]
-  publish = "export/"
+  publish = "__sapper__/export/"
 
 [[redirects]]
   from = "/*"

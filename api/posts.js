@@ -1,7 +1,7 @@
 import fetch from './utils/fetch'
 import { contributors } from './'
 import { folds } from './'
-import dateSort from '../routes/_helpers/date-sort'
+import dateSort from '../src/routes/_helpers/date-sort'
 
 export default {
   get: function (id, embedded) {

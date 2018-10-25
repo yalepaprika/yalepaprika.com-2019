@@ -1,0 +1,69 @@
+<svelte:head>
+  <title>{decodeHTML(article.title.rendered)}</title>
+</svelte:head>
+
+<Title title={article.title.rendered}/>
+<div class="x xafs xw">
+  <div class="c12 sm-c2 p1">
+    {#if article.meta}
+      {#if article.meta.contributors}
+        <ul>
+          {#each article.meta.contributors as contributor}
+            <li>
+              <h2><a rel="prefetch" href="/contributors/{contributor.slug}">{@html contributor.title.rendered}</a></h2>
+              {#if contributor.meta.degree && contributor.meta.graduation_year}
+                <h3>{contributor.meta.degree}, {contributor.meta.graduation_year}</h3>
+              {/if}
+            </li>
+          {/each}
+        </ul>
+      {/if}
+      {#if article.meta.fold}
+        <p class="mb0">{article.meta.fold.meta.volume}-{article.meta.fold.meta.number}</p>
+        <p>{@html article.meta.fold.title.rendered}</p>
+        <h5>{dateFormat(article.meta.fold.meta.publication_date)}</h5>
+      {/if}
+    {/if}
+  </div>
+  <div class="c12 sm-c6 p1 content">
+    {@html article.content.rendered}
+  </div>
+</div>
+
+<style>
+  :global(.content img) {
+    display: block;
+    margin-bottom: 1rem;
+    width: 100%;
+    height: auto;
+  }
+</style>
+
+<script>
+  import dateFormat from '../_helpers/date-format.js'
+  import decodeHTML from '../_helpers/decode-html.js'
+
+  export default {
+    components: {
+      Title: '../../../components/Title.html'
+    },
+    helpers: {
+      dateFormat,
+      decodeHTML
+    },
+    async preload({ params, query }) {
+      const maskFields = 'title/rendered,content/rendered,' +
+        'meta(' +
+          'contributors(title/rendered,slug,meta(degree,graduation_year)),' +
+          'fold(title/rendered,meta(volume,number,publication_date))'
+        ')'
+      const res = await this.fetch(`articles/${params.slug}.json?fields=${maskFields}`);
+      if (!res.ok) {
+        const message = await res.text()
+        return this.error(res.status, message);
+      }
+      const data = await res.json();
+      return { article: data };
+    }
+  };
+</script>

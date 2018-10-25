@@ -1,0 +1,26 @@
+<svelte:head>
+  <title>Articles</title>
+</svelte:head>
+
+<ArticleArchive {articles}/>
+
+<script>
+  export default {
+    components: {
+      ArticleArchive: '../../../components/ArticleArchive.html'
+    },
+    async preload({ params, query }) {
+      const maskFields = 'title/rendered,slug,meta(' +
+        'contributors(title/rendered,slug),' +
+        'fold(title/rendered,slug,meta/publication_date)'
+      ')'
+      const res = await this.fetch(`/articles.json?fields=${maskFields}`)
+      if (!res.ok) {
+        const message = await res.text()
+        return this.error(res.status, message);
+      }
+      const data = await res.json()
+      return { articles: data }
+    }
+  };
+</script>

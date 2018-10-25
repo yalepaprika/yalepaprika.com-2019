@@ -1,0 +1,27 @@
+<svelte:head>
+  <title>Contributors</title>
+</svelte:head>
+
+<ContributorsArchive {contributors}/>
+
+<style>
+
+</style>
+
+<script>
+  export default {
+    components: {
+      ContributorsArchive: '../../../components/ContributorsArchive.html'
+    },
+    async preload({ params, query }) {
+      const maskFields = 'title/rendered,slug,meta/organization'
+      const res = await this.fetch(`/contributors.json?fields=${maskFields}`)
+      if (!res.ok) {
+        const message = await res.text()
+        return this.error(res.status, message);
+      }
+      const data = await res.json()
+      return { contributors: data }
+    }
+  };
+</script>

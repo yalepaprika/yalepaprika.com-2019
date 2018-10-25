@@ -1,0 +1,57 @@
+<Nav segment={child.segment}/>
+
+{#if preloading}
+<LoadingBar/>
+{/if}
+
+<main class="pt4 pb1 px1 psr">
+  <div id="background" class="psf t0 l0 r0"></div>
+  <svelte:component this={child.component} {...child.props}/>
+</main>
+
+<style>
+  main {
+    min-height: 100vh;
+  }
+  #background {
+    height: 100vh;
+    z-index: -1;
+    background: linear-gradient(
+      to top,
+      hsla(16, 83%, 54%, 0) 0%,
+      hsla(16, 83%, 54%, 0.262) 19%,
+      hsla(16, 83%, 54%, 0.459) 34%,
+      hsla(16, 83%, 54%, 0.618) 47%,
+      hsla(16, 83%, 54%, 0.722) 56.5%,
+      hsla(16, 83%, 54%, 0.806) 65%,
+      hsla(16, 83%, 54%, 0.874) 73%,
+      hsla(16, 83%, 54%, 0.925) 80.2%,
+      hsla(16, 83%, 54%, 0.958) 86.1%,
+      hsla(16, 83%, 54%, 0.979) 91%,
+      hsla(16, 83%, 54%, 0.992) 95.2%,
+      hsla(16, 83%, 54%, 0.998) 98.2%,
+      hsla(16, 83%, 54%, 1) 100%
+    );
+  }
+</style>
+
+<script>
+  export default {
+    components: {
+      Nav: '../../components/Nav.html',
+      LoadingBar: '../../components/LoadingBar.html'
+    },
+    oncreate() {
+      (function(f, a, t, h, o, m){
+        a[h]=a[h]||function(){
+          (a[h].q=a[h].q||[]).push(arguments)
+        };
+        o=f.createElement('script'),
+        m=f.getElementsByTagName('script')[0];
+        o.async=1; o.src=t; o.id='fathom-script';
+        m.parentNode.insertBefore(o,m)
+      })(document, window, '//analytics.yalepaprika.com/tracker.js', 'fathom');
+      fathom('trackPageview');
+    }
+  };
+</script>

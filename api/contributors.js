@@ -1,7 +1,7 @@
 import fetch from './utils/fetch'
 import { posts } from './'
 import { folds } from './'
-import lastName from '../routes/_helpers/last-name'
+import lastName from '../src/routes/_helpers/last-name'
 
 export default {
   get: function (id, embedded) {

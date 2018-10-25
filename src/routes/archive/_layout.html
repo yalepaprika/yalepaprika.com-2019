@@ -1,0 +1,24 @@
+<Title title={titleCase(child.segment)}/>
+<div class="x">
+  <div class="c2 p1 dn sm-db">
+    <ul>
+      <li><a rel="prefetch" href="/archive/articles">Articles</a></li>
+      <li><a rel="prefetch" href="/archive/folds">Folds</a></li>
+      <li><a rel="prefetch" href="/archive/contributors">Contributors</a></li>
+    </ul>
+  </div>
+  <div class="c12 sm-c10 p1">
+    <svelte:component this={child.component} {...child.props}/>
+  </div>
+</div>
+
+<script>
+  export default {
+    components: {
+      Title: '../../../components/Title.html'
+    },
+    helpers: {
+      titleCase: ((title) => title.charAt(0).toUpperCase() + title.substr(1))
+    }
+  }
+</script>

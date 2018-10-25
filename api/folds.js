@@ -2,7 +2,7 @@ import fetch from './utils/fetch'
 import { posts } from './'
 import { contributors } from './'
 import { media } from './'
-import dateSort from '../routes/_helpers/date-sort'
+import dateSort from '../src/routes/_helpers/date-sort'
 
 function get (id, embedded) {
   return fetch(`/wp/v2/folds/${id}`)
