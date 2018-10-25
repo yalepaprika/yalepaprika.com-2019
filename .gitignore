@@ -1,6 +1,12 @@
 .DS_Store
 node_modules
 /.sapper/
+/__sapper__/dev/
+/__sapper__/build/
+/__sapper__/_layout.html/
+/__sapper__/client.js/
+/__sapper__/server.js/
+/__sapper__/service-worker.js/
 yarn.lock
 yarn-error.log
 /cypress/screenshots/
