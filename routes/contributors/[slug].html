@@ -10,22 +10,31 @@
       <h3>{contributor.meta.degree}, {contributor.meta.graduation_year}</h3>
     {/if}
   </div>
-  <div class="c12 sm-c4 p1">
-<!--     <h1>Articles</h1>
-    <ul>
-      {#each results.fold as result}
-        <li><h1><a rel='prefetch' href='folds/{result.meta.volume}-{result.meta.number}'>{@html result.title.rendered }</a></h1></li>
-      {/each}
-    </ul>
-  </div>
-  <div class="c4 p1">
-    <h1>Folds</h1>
-    <ul>
-      {#each results.fold as result}
-        <li><h1><a rel='prefetch' href='folds/{result.meta.volume}-{result.meta.number}'>{@html result.title.rendered }</a></h1></li>
-      {/each}
-    </ul>
- -->
+  <div class="c12 sm-c8 p1">
+    {#if contributor.meta.folds_edited && contributor.meta.folds_edited.length}
+      <h3 class="mb1">Folds (Issue Editor)</h3>
+      <div class="x c12">
+        {#each contributor.meta.folds_edited as fold}
+          <div class="c4 pr1 pb1">
+            <a rel="prefetch" href="/folds/{fold.slug}"><FullSpread media={fold.meta.fold_front}/></a>
+          </div>
+        {/each}
+      </div>
+    {/if}
+    {#if contributor.meta.folds_designed && contributor.meta.folds_designed.length}
+      <h3 class="mb1">Folds (Graphic Designer)</h3>
+      <div class="x c12">
+        {#each contributor.meta.folds_designed as fold}
+          <div class="c4 pr1 pb1">
+            <a rel="prefetch" href="/folds/{fold.slug}"><FullSpread media={fold.meta.fold_front}/></a>
+          </div>
+        {/each}
+      </div>
+    {/if}
+    {#if contributor.meta.posts_contributed && contributor.meta.posts_contributed.length}
+      <h3>Articles</h3>
+      <ArticleList articles={contributor.meta.posts_contributed} />
+    {/if}
   </div>
 </div>
 <style>
@@ -37,6 +46,8 @@
 
   export default {
     components: {
+      FullSpread: '../../components/FullSpread.html',
+      ArticleList: '../../components/ArticleList.html',
       Title: '../../components/Title.html'
     },
     helpers: {
@@ -45,7 +56,10 @@
     async preload({ params, query }) {
       const maskFields = 'title/rendered,' +
       'meta(' +
-        'degree,graduation_year' +
+        'degree,graduation_year,' +
+        'folds_edited(slug,meta(fold_front(media_details(sizes(full(source_url)))))),' +
+        'folds_designed(slug,meta(fold_front(media_details(sizes(full(source_url)))))),' +
+        'posts_contributed(title/rendered,slug,meta/contributors(title/rendered))' +
       ')'
       const res = await this.fetch(`contributors/${params.slug}.json?fields=${maskFields}`);
       if (!res.ok) {
@@ -54,6 +68,9 @@
       }
       const data = await res.json();
       return { contributor: data };
-    }
+    },
+    oncreate() {
+      console.log('json', this.get());
+    },
   };
 </script>

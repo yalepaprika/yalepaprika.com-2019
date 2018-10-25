@@ -1,4 +1,4 @@
-import fetch from 'node-fetch'
+import { fetch } from 'fetch-h2'
 import { TaskQueue } from 'cwait'
 import URL from './url'
 import Cache from './cache'

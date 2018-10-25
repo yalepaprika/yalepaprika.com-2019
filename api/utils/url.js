@@ -1,3 +1,3 @@
-const URL = 'http://159.89.34.209/wp-json'
+const URL = 'https://api.yalepaprika.com/wp-json'
 
 export default URL

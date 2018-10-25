@@ -1,7 +1,8 @@
 import fetch from './utils/fetch'
+import { posts } from './'
+import { folds } from './'
 import lastName from '../routes/_helpers/last-name'
 
-// TODO: add easy way to get fold position
 export default {
   get: function (id, embedded) {
     return fetch(`/wp/v2/contributors/${id}`)
@@ -36,15 +37,26 @@ function sanitize (contributor) {
   return contributor
 }
 
-// TODO: figure out related posts
 function fetchEmbedded (contributor) {
   let embedded = []
-  // if (contributor.meta.related_posts && contributor.meta.related_posts.length) {
-  //   let _posts = contributor.meta.related_posts.map(post => posts.get(post, false))
-  //   embedded.push(Promise.all(_posts).then(results => {
-  //     contributor.meta.related_posts = results
-  //   }))
-  // }
+  if (contributor.meta.posts_contributed && contributor.meta.posts_contributed.length) {
+    let _posts = contributor.meta.posts_contributed.map(post => posts.get(post, false))
+    embedded.push(Promise.all(_posts).then(results => {
+      contributor.meta.posts_contributed = results
+    }))
+  }
+  if (contributor.meta.folds_edited && contributor.meta.folds_edited.length) {
+    let _folds = contributor.meta.folds_edited.map(fold => folds.get(fold, false))
+    embedded.push(Promise.all(_folds).then(results => {
+      contributor.meta.folds_edited = results
+    }))
+  }
+  if (contributor.meta.folds_designed && contributor.meta.folds_designed.length) {
+    let _folds = contributor.meta.folds_designed.map(fold => folds.get(fold, false))
+    embedded.push(Promise.all(_folds).then(results => {
+      contributor.meta.folds_designed = results
+    }))
+  }
   return Promise.all(embedded).then(() => contributor)
 }
 
