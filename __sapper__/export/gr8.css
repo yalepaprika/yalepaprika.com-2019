@@ -289,18 +289,33 @@
 .dev > * > * > * * {outline:1px solid #00ff00}.b1-black{border:1px solid #000}
 .b1-white{border:1px solid #fff}
 .b1-paprika{border:1px solid hsl(16, 83%, 54%)}
+.b2-black{border:2px solid #000}
+.b2-white{border:2px solid #fff}
+.b2-paprika{border:2px solid hsl(16, 83%, 54%)}
 .bt1-black{border-top:1px solid #000}
 .bt1-white{border-top:1px solid #fff}
 .bt1-paprika{border-top:1px solid hsl(16, 83%, 54%)}
+.bt2-black{border-top:2px solid #000}
+.bt2-white{border-top:2px solid #fff}
+.bt2-paprika{border-top:2px solid hsl(16, 83%, 54%)}
 .br1-black{border-right:1px solid #000}
 .br1-white{border-right:1px solid #fff}
 .br1-paprika{border-right:1px solid hsl(16, 83%, 54%)}
+.br2-black{border-right:2px solid #000}
+.br2-white{border-right:2px solid #fff}
+.br2-paprika{border-right:2px solid hsl(16, 83%, 54%)}
 .bb1-black{border-bottom:1px solid #000}
 .bb1-white{border-bottom:1px solid #fff}
 .bb1-paprika{border-bottom:1px solid hsl(16, 83%, 54%)}
+.bb2-black{border-bottom:2px solid #000}
+.bb2-white{border-bottom:2px solid #fff}
+.bb2-paprika{border-bottom:2px solid hsl(16, 83%, 54%)}
 .bl1-black{border-left:1px solid #000}
 .bl1-white{border-left:1px solid #fff}
 .bl1-paprika{border-left:1px solid hsl(16, 83%, 54%)}
+.bl2-black{border-left:2px solid #000}
+.bl2-white{border-left:2px solid #fff}
+.bl2-paprika{border-left:2px solid hsl(16, 83%, 54%)}
 .bgc-black{background-color:#000}
 .bgc-white{background-color:#fff}
 .bgc-paprika{background-color:hsl(16, 83%, 54%)}
@@ -607,18 +622,33 @@
 .sm-dev > * > * > * * {outline:1px solid #00ff00}.sm-b1-black{border:1px solid #000}
 .sm-b1-white{border:1px solid #fff}
 .sm-b1-paprika{border:1px solid hsl(16, 83%, 54%)}
+.sm-b2-black{border:2px solid #000}
+.sm-b2-white{border:2px solid #fff}
+.sm-b2-paprika{border:2px solid hsl(16, 83%, 54%)}
 .sm-bt1-black{border-top:1px solid #000}
 .sm-bt1-white{border-top:1px solid #fff}
 .sm-bt1-paprika{border-top:1px solid hsl(16, 83%, 54%)}
+.sm-bt2-black{border-top:2px solid #000}
+.sm-bt2-white{border-top:2px solid #fff}
+.sm-bt2-paprika{border-top:2px solid hsl(16, 83%, 54%)}
 .sm-br1-black{border-right:1px solid #000}
 .sm-br1-white{border-right:1px solid #fff}
 .sm-br1-paprika{border-right:1px solid hsl(16, 83%, 54%)}
+.sm-br2-black{border-right:2px solid #000}
+.sm-br2-white{border-right:2px solid #fff}
+.sm-br2-paprika{border-right:2px solid hsl(16, 83%, 54%)}
 .sm-bb1-black{border-bottom:1px solid #000}
 .sm-bb1-white{border-bottom:1px solid #fff}
 .sm-bb1-paprika{border-bottom:1px solid hsl(16, 83%, 54%)}
+.sm-bb2-black{border-bottom:2px solid #000}
+.sm-bb2-white{border-bottom:2px solid #fff}
+.sm-bb2-paprika{border-bottom:2px solid hsl(16, 83%, 54%)}
 .sm-bl1-black{border-left:1px solid #000}
 .sm-bl1-white{border-left:1px solid #fff}
 .sm-bl1-paprika{border-left:1px solid hsl(16, 83%, 54%)}
+.sm-bl2-black{border-left:2px solid #000}
+.sm-bl2-white{border-left:2px solid #fff}
+.sm-bl2-paprika{border-left:2px solid hsl(16, 83%, 54%)}
 .sm-bgc-black{background-color:#000}
 .sm-bgc-white{background-color:#fff}
 .sm-bgc-paprika{background-color:hsl(16, 83%, 54%)}
@@ -926,18 +956,33 @@
 .md-dev > * > * > * * {outline:1px solid #00ff00}.md-b1-black{border:1px solid #000}
 .md-b1-white{border:1px solid #fff}
 .md-b1-paprika{border:1px solid hsl(16, 83%, 54%)}
+.md-b2-black{border:2px solid #000}
+.md-b2-white{border:2px solid #fff}
+.md-b2-paprika{border:2px solid hsl(16, 83%, 54%)}
 .md-bt1-black{border-top:1px solid #000}
 .md-bt1-white{border-top:1px solid #fff}
 .md-bt1-paprika{border-top:1px solid hsl(16, 83%, 54%)}
+.md-bt2-black{border-top:2px solid #000}
+.md-bt2-white{border-top:2px solid #fff}
+.md-bt2-paprika{border-top:2px solid hsl(16, 83%, 54%)}
 .md-br1-black{border-right:1px solid #000}
 .md-br1-white{border-right:1px solid #fff}
 .md-br1-paprika{border-right:1px solid hsl(16, 83%, 54%)}
+.md-br2-black{border-right:2px solid #000}
+.md-br2-white{border-right:2px solid #fff}
+.md-br2-paprika{border-right:2px solid hsl(16, 83%, 54%)}
 .md-bb1-black{border-bottom:1px solid #000}
 .md-bb1-white{border-bottom:1px solid #fff}
 .md-bb1-paprika{border-bottom:1px solid hsl(16, 83%, 54%)}
+.md-bb2-black{border-bottom:2px solid #000}
+.md-bb2-white{border-bottom:2px solid #fff}
+.md-bb2-paprika{border-bottom:2px solid hsl(16, 83%, 54%)}
 .md-bl1-black{border-left:1px solid #000}
 .md-bl1-white{border-left:1px solid #fff}
 .md-bl1-paprika{border-left:1px solid hsl(16, 83%, 54%)}
+.md-bl2-black{border-left:2px solid #000}
+.md-bl2-white{border-left:2px solid #fff}
+.md-bl2-paprika{border-left:2px solid hsl(16, 83%, 54%)}
 .md-bgc-black{background-color:#000}
 .md-bgc-white{background-color:#fff}
 .md-bgc-paprika{background-color:hsl(16, 83%, 54%)}
@@ -1245,18 +1290,33 @@
 .lg-dev > * > * > * * {outline:1px solid #00ff00}.lg-b1-black{border:1px solid #000}
 .lg-b1-white{border:1px solid #fff}
 .lg-b1-paprika{border:1px solid hsl(16, 83%, 54%)}
+.lg-b2-black{border:2px solid #000}
+.lg-b2-white{border:2px solid #fff}
+.lg-b2-paprika{border:2px solid hsl(16, 83%, 54%)}
 .lg-bt1-black{border-top:1px solid #000}
 .lg-bt1-white{border-top:1px solid #fff}
 .lg-bt1-paprika{border-top:1px solid hsl(16, 83%, 54%)}
+.lg-bt2-black{border-top:2px solid #000}
+.lg-bt2-white{border-top:2px solid #fff}
+.lg-bt2-paprika{border-top:2px solid hsl(16, 83%, 54%)}
 .lg-br1-black{border-right:1px solid #000}
 .lg-br1-white{border-right:1px solid #fff}
 .lg-br1-paprika{border-right:1px solid hsl(16, 83%, 54%)}
+.lg-br2-black{border-right:2px solid #000}
+.lg-br2-white{border-right:2px solid #fff}
+.lg-br2-paprika{border-right:2px solid hsl(16, 83%, 54%)}
 .lg-bb1-black{border-bottom:1px solid #000}
 .lg-bb1-white{border-bottom:1px solid #fff}
 .lg-bb1-paprika{border-bottom:1px solid hsl(16, 83%, 54%)}
+.lg-bb2-black{border-bottom:2px solid #000}
+.lg-bb2-white{border-bottom:2px solid #fff}
+.lg-bb2-paprika{border-bottom:2px solid hsl(16, 83%, 54%)}
 .lg-bl1-black{border-left:1px solid #000}
 .lg-bl1-white{border-left:1px solid #fff}
 .lg-bl1-paprika{border-left:1px solid hsl(16, 83%, 54%)}
+.lg-bl2-black{border-left:2px solid #000}
+.lg-bl2-white{border-left:2px solid #fff}
+.lg-bl2-paprika{border-left:2px solid hsl(16, 83%, 54%)}
 .lg-bgc-black{background-color:#000}
 .lg-bgc-white{background-color:#fff}
 .lg-bgc-paprika{background-color:hsl(16, 83%, 54%)}

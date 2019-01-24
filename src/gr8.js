@@ -12,7 +12,7 @@ const colors = {
   paprika: 'hsl(16, 83%, 54%)'
 }
 
-const borderWeights = [1]
+const borderWeights = [1, 2]
 
 const borders = {}
 
