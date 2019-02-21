@@ -27,6 +27,10 @@ const components = [
 		css: "__SAPPER_CSS_PLACEHOLDER:contributors/[slug].html__"
 	},
 	{
+		js: () => import(/* webpackChunkName: "subscribe" */ "../src/routes/subscribe.html"),
+		css: "__SAPPER_CSS_PLACEHOLDER:subscribe.html__"
+	},
+	{
 		js: () => import(/* webpackChunkName: "articles" */ "../src/routes/articles/index.html"),
 		css: "__SAPPER_CSS_PLACEHOLDER:articles/index.html__"
 	},
@@ -107,11 +111,19 @@ const pages = (d => [
 	},
 
 	{
+		// subscribe.html
+		pattern: /^\/subscribe\/?$/,
+		parts: [
+			{ i: 3 }
+		]
+	},
+
+	{
 		// articles/index.html
 		pattern: /^\/articles\/?$/,
 		parts: [
 			null,
-			{ i: 3 }
+			{ i: 4 }
 		]
 	},
 
@@ -120,7 +132,7 @@ const pages = (d => [
 		pattern: /^\/articles\/([^\/]+?)\/?$/,
 		parts: [
 			null,
-			{ i: 4, params: match => ({ slug: d(match[1]) }) }
+			{ i: 5, params: match => ({ slug: d(match[1]) }) }
 		]
 	},
 
@@ -128,8 +140,8 @@ const pages = (d => [
 		// archive/index.html
 		pattern: /^\/archive\/?$/,
 		parts: [
-			{ i: 5 },
-			{ i: 6 }
+			{ i: 6 },
+			{ i: 7 }
 		]
 	},
 
@@ -137,8 +149,8 @@ const pages = (d => [
 		// archive/contributors.html
 		pattern: /^\/archive\/contributors\/?$/,
 		parts: [
-			{ i: 5 },
-			{ i: 7 }
+			{ i: 6 },
+			{ i: 8 }
 		]
 	},
 
@@ -146,8 +158,8 @@ const pages = (d => [
 		// archive/articles.html
 		pattern: /^\/archive\/articles\/?$/,
 		parts: [
-			{ i: 5 },
-			{ i: 8 }
+			{ i: 6 },
+			{ i: 9 }
 		]
 	},
 
@@ -155,8 +167,8 @@ const pages = (d => [
 		// archive/folds.html
 		pattern: /^\/archive\/folds\/?$/,
 		parts: [
-			{ i: 5 },
-			{ i: 9 }
+			{ i: 6 },
+			{ i: 10 }
 		]
 	},
 
@@ -164,7 +176,7 @@ const pages = (d => [
 		// support.html
 		pattern: /^\/support\/?$/,
 		parts: [
-			{ i: 10 }
+			{ i: 11 }
 		]
 	},
 
@@ -172,7 +184,7 @@ const pages = (d => [
 		// search.html
 		pattern: /^\/search\/?$/,
 		parts: [
-			{ i: 11 }
+			{ i: 12 }
 		]
 	},
 
@@ -180,7 +192,7 @@ const pages = (d => [
 		// about.html
 		pattern: /^\/about\/?$/,
 		parts: [
-			{ i: 12 }
+			{ i: 13 }
 		]
 	},
 
@@ -189,7 +201,7 @@ const pages = (d => [
 		pattern: /^\/folds\/?$/,
 		parts: [
 			null,
-			{ i: 13 }
+			{ i: 14 }
 		]
 	},
 
@@ -198,7 +210,7 @@ const pages = (d => [
 		pattern: /^\/folds\/([^\/]+?)\/?$/,
 		parts: [
 			null,
-			{ i: 14, params: match => ({ slug: d(match[1]) }) }
+			{ i: 15, params: match => ({ slug: d(match[1]) }) }
 		]
 	},
 
@@ -206,7 +218,7 @@ const pages = (d => [
 		// [slug].html
 		pattern: /^\/([^\/]+?)\/?$/,
 		parts: [
-			{ i: 15, params: match => ({ slug: d(match[1]) }) }
+			{ i: 16, params: match => ({ slug: d(match[1]) }) }
 		]
 	}
 ])(decodeURIComponent);

@@ -21,6 +21,7 @@ import * as __route_folds_$slug_json from "../src/routes/folds/[slug].json.js";
 import __index from "../src/routes/index.html";
 import __contributors from "../src/routes/contributors/index.html";
 import __contributors_$slug from "../src/routes/contributors/[slug].html";
+import __subscribe from "../src/routes/subscribe.html";
 import __articles from "../src/routes/articles/index.html";
 import __articles_$slug from "../src/routes/articles/[slug].html";
 import __archive__layout from "../src/routes/archive/_layout.html";
@@ -143,6 +144,14 @@ export const manifest = {
 			parts: [
 				null,
 				{ name: "contributors_$slug", file: "contributors/[slug].html", component: __contributors_$slug, params: match => ({ slug: d(match[1]) }) }
+			]
+		},
+
+		{
+			// subscribe.html
+			pattern: /^\/subscribe\/?$/,
+			parts: [
+				{ name: "subscribe", file: "subscribe.html", component: __subscribe }
 			]
 		},
 
