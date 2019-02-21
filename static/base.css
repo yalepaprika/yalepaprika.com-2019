@@ -49,3 +49,7 @@ hr {
   border-bottom: 0.1rem solid black;
   margin-bottom: 1.2rem;
 }
+
+blockquote {
+  margin-left: 2.4rem;
+}
