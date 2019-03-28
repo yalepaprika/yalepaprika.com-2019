@@ -1,1 +1,1 @@
-request to https://api.yalepaprika.com/wp-json/wp/v2/contributors?slug=liam-grace-flood failed, reason: connect ETIMEDOUT 159.89.34.209:443
+{"title":{"rendered":"Liam Grace-Flood"},"meta":{"degree":"M.B.A","graduation_year":"","folds_edited":[],"folds_designed":[],"posts_contributed":[{"title":{"rendered":"Systems as Design as Art: Finishing Bruno Munari&#8217;s Sentence"},"slug":"systems-as-design-as-art-finishing-bruno-munaris-sentence","meta":{"contributors":[{"title":{"rendered":"Liam Grace-Flood"}}]}}]}}
