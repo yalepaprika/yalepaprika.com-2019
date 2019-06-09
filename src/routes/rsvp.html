@@ -1,0 +1,65 @@
+<svelte:head>
+  <title>RSVP</title>
+</svelte:head>
+
+<Title title="RSVP"/>
+<div class="x xw">
+  <div class="dn sm-db c2 p1">
+    <ul>
+      <li><a rel="prefetch" href="/about">About</a></li>
+      <li><a rel="prefetch" href="/support">Support</a></li>
+      <li><a rel="prefetch" href="/search">Search</a></li>
+    </ul>
+  </div>
+  <div class="c12 sm-c4 p1">
+    <div class="entry-content">
+      <p><strong>PAPRIKA! DINNER</strong><br>
+      Thursday, July 11, 7 30 PM<br>
+      Rux Studios, Queens<br>
+      10-40 46th Ave, Long Island City, NY 11101<br>
+      <strong>Guest of Honor:</strong>&nbsp; Erik Freer<br>
+      <strong>Co-hosts:</strong> Madelynn Ringo, Julie Turgeon, Tess McNamara, Nicolas Kemper</p>
+      <p>We are happy to announce the completion and launch of Paprika! Volume 1, containing the complete first year of Paprika!, reproduced at full size.</p>
+      <p>To celebrate the event, we are having a dinner to thank our graphic designer Erik Freer for his work, and raise funds to support Paprika!</p>
+      <p>Yale School of Architecture alumni Chris Beardsley and Russell Greenberg have offered to host us in their design studio, Rux. Madelynn Ringo and Nicolas Kemper are providing dinner.</p>
+    </div>
+  </div>
+  <div class="c12 sm-c4 p1" >
+    <div class="paypal p1">
+      <p><strong>Tickets are are by donation. Donations above $90 include a copy of Volume 1 (MSRP $80).</strong></p>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_s-xclick" />
+        <input type="hidden" name="hosted_button_id" value="68PPNB4VMPDTU" />
+        <input type="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" name="submit" value="Donate"><br>
+        <img src="https://www.paypal.com/en_US/i/scr/pixel.gif" alt="" width="1" height="1" border="0" />
+      </form>
+      <p>All funds raised will go to support the student operation. An additional $30 will help fund snacks for Paprika meetings, while $530 will provide 500 copies of an entire issue in color.</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  input[type=submit] {
+    background: black;
+    color: white;
+    padding: 8px 16px;
+  }
+
+  input[type=submit]:hover {
+    color: hsl(16, 83%, 54%);
+  }
+
+
+  .paypal {
+    width: 100%;
+    border: 0.2rem solid black;
+  }
+</style>
+
+<script>
+  export default {
+    components: {
+      Title: '../../components/Title.html'
+    }
+  };
+</script>

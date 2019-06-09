@@ -34,6 +34,7 @@ import __search from "../src/routes/search.html";
 import __about from "../src/routes/about.html";
 import __folds from "../src/routes/folds/index.html";
 import __folds_$slug from "../src/routes/folds/[slug].html";
+import __rsvp from "../src/routes/rsvp.html";
 import __$slug from "../src/routes/[slug].html";
 import root from "../src/routes/_layout.html";
 import error from "../src/routes/_error.html";
@@ -248,6 +249,14 @@ export const manifest = {
 			parts: [
 				null,
 				{ name: "folds_$slug", file: "folds/[slug].html", component: __folds_$slug, params: match => ({ slug: d(match[1]) }) }
+			]
+		},
+
+		{
+			// rsvp.html
+			pattern: /^\/rsvp\/?$/,
+			parts: [
+				{ name: "rsvp", file: "rsvp.html", component: __rsvp }
 			]
 		},
 

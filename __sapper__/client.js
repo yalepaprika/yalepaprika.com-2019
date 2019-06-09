@@ -79,6 +79,10 @@ const components = [
 		css: "__SAPPER_CSS_PLACEHOLDER:folds/[slug].html__"
 	},
 	{
+		js: () => import(/* webpackChunkName: "rsvp" */ "../src/routes/rsvp.html"),
+		css: "__SAPPER_CSS_PLACEHOLDER:rsvp.html__"
+	},
+	{
 		js: () => import(/* webpackChunkName: "$slug" */ "../src/routes/[slug].html"),
 		css: "__SAPPER_CSS_PLACEHOLDER:[slug].html__"
 	}
@@ -215,10 +219,18 @@ const pages = (d => [
 	},
 
 	{
+		// rsvp.html
+		pattern: /^\/rsvp\/?$/,
+		parts: [
+			{ i: 16 }
+		]
+	},
+
+	{
 		// [slug].html
 		pattern: /^\/([^\/]+?)\/?$/,
 		parts: [
-			{ i: 16, params: match => ({ slug: d(match[1]) }) }
+			{ i: 17, params: match => ({ slug: d(match[1]) }) }
 		]
 	}
 ])(decodeURIComponent);
