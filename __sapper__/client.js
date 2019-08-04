@@ -59,10 +59,6 @@ const components = [
 		css: "__SAPPER_CSS_PLACEHOLDER:archive/folds.html__"
 	},
 	{
-		js: () => import(/* webpackChunkName: "support" */ "../src/routes/support.html"),
-		css: "__SAPPER_CSS_PLACEHOLDER:support.html__"
-	},
-	{
 		js: () => import(/* webpackChunkName: "search" */ "../src/routes/search.html"),
 		css: "__SAPPER_CSS_PLACEHOLDER:search.html__"
 	},
@@ -177,18 +173,10 @@ const pages = (d => [
 	},
 
 	{
-		// support.html
-		pattern: /^\/support\/?$/,
-		parts: [
-			{ i: 11 }
-		]
-	},
-
-	{
 		// search.html
 		pattern: /^\/search\/?$/,
 		parts: [
-			{ i: 12 }
+			{ i: 11 }
 		]
 	},
 
@@ -196,7 +184,7 @@ const pages = (d => [
 		// about.html
 		pattern: /^\/about\/?$/,
 		parts: [
-			{ i: 13 }
+			{ i: 12 }
 		]
 	},
 
@@ -205,7 +193,7 @@ const pages = (d => [
 		pattern: /^\/folds\/?$/,
 		parts: [
 			null,
-			{ i: 14 }
+			{ i: 13 }
 		]
 	},
 
@@ -214,7 +202,7 @@ const pages = (d => [
 		pattern: /^\/folds\/([^\/]+?)\/?$/,
 		parts: [
 			null,
-			{ i: 15, params: match => ({ slug: d(match[1]) }) }
+			{ i: 14, params: match => ({ slug: d(match[1]) }) }
 		]
 	},
 
@@ -222,7 +210,7 @@ const pages = (d => [
 		// rsvp.html
 		pattern: /^\/rsvp\/?$/,
 		parts: [
-			{ i: 16 }
+			{ i: 15 }
 		]
 	},
 
@@ -230,7 +218,7 @@ const pages = (d => [
 		// [slug].html
 		pattern: /^\/([^\/]+?)\/?$/,
 		parts: [
-			{ i: 17, params: match => ({ slug: d(match[1]) }) }
+			{ i: 16, params: match => ({ slug: d(match[1]) }) }
 		]
 	}
 ])(decodeURIComponent);

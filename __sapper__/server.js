@@ -29,7 +29,6 @@ import __archive from "../src/routes/archive/index.html";
 import __archive_contributors from "../src/routes/archive/contributors.html";
 import __archive_articles from "../src/routes/archive/articles.html";
 import __archive_folds from "../src/routes/archive/folds.html";
-import __support from "../src/routes/support.html";
 import __search from "../src/routes/search.html";
 import __about from "../src/routes/about.html";
 import __folds from "../src/routes/folds/index.html";
@@ -207,14 +206,6 @@ export const manifest = {
 			parts: [
 				{ name: "archive__layout", file: "archive/_layout.html", component: __archive__layout },
 				{ name: "archive_folds", file: "archive/folds.html", component: __archive_folds }
-			]
-		},
-
-		{
-			// support.html
-			pattern: /^\/support\/?$/,
-			parts: [
-				{ name: "support", file: "support.html", component: __support }
 			]
 		},
 
