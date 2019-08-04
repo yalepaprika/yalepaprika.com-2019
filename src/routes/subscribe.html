@@ -4,28 +4,110 @@
 
 <Title title="Subscribe"/>
 <div class="x">
+  <div style="display: none;"><a href="/rsvp">RSVP</a></div>
   <div class="dn sm-db c2 p1">
     <ul>
       <li><a rel="prefetch" href="/about">About</a></li>
-      <li><a rel="prefetch" href="/support">Support</a></li>
+      <li><a rel="prefetch" href="/subscribe">Subscribe</a></li>
       <li><a rel="prefetch" href="/search">Search</a></li>
     </ul>
   </div>
   <div class="c12 sm-c4 p1">
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-    <input type="hidden" name="cmd" value="_s-xclick">
-    <input type="hidden" name="hosted_button_id" value="VMQ7RZMFSWPSE">
-    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-    <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-    </form>
+    <p><b>Why should I get a Paprika! print subscription?</b></p>
+    <p><b>Paprika! is an art object.</b> Every issue of Paprika! is a newspaper broadsheet uniquely designed by students from Yale’s Graphic Design program. No two issues are alike.</p>
+    <p><b>Paprika! print subscriptions support our 100% student-run publication.</b> Every issue is student-curated and aims to broadcast diverse voices in the fields of art, architecture and design.</p>
+    <p><b>Paprika! features content from prominent figures in the profession.</b> Past issues have printed interviews and conversations with:</p>
+    <div class="c12 x">
+      <div class="c4">
+        <ul>
+          <li>Stan Allen</li>
+          <li>Assemble Studio</li>
+          <li>Iwan Baan</li>
+          <li>Deborah Berke</li>
+          <li>Tatiana Bilbao</li>
+        </ul>
+      </div>
+      <div class="c4">
+        <ul>
+          <li>Keller Easterling</li>
+          <li>Peter Eisenman</li>
+          <li>César Pelli</li>
+          <li>Patrik Schumacher</li>
+          <li>Robert A.M. Stern</li>
+        </ul>        
+      </div>
+      <div class="c4">
+        <ul>
+          <li>T+E+A+M</li>
+          <li>Anthony Vidler</li>
+        </ul>        
+      </div>
+    </div>
+    <p><b>What does a Paprika! print subscription look like?</b></p>
+    <p>Paprika! prints approximately 18 issues a year from September to April. Each issue is released and mailed on a Thursday. All plans include shipping and are automatically renewed annually. Prices reflect a 1-year subscription.</p>
+    <p><b>Customer Service</b></p>
+    <p>Please e-mail <a href="mailto:info@paprikapaper.com">info@paprikapaper.com</a> for all inquiries.</p>
+  </div>
+  <div class="c12 sm-c4 p1">
+    <div class="paypal p1 mb1">
+      <h3><b>Basic Subscription</b></h3>
+      <h4 class="mb1">for individuals</h4>
+      <p>1 copy of Paprika! delivered to your door for every issue.</p>
+      <a class="subscribe-button mb1" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=78R6925774D5C" target="_blank">Subscribe</a>
+      <p class="price mb0">$72</p>
+      <p>($4 per copy)</p>
+    </div>
+    <div class="paypal p1 mb1">
+      <h3><b>Bulk Subscription</b></h3>
+      <h4 class="mb1">for offices and libraries</h4>
+      <p>5 copies of Paprika! delivered to your office or library for every issue.</p>
+      <a class="subscribe-button mb1" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HKW7QPS6PN24W" target="_blank">Subscribe</a>
+      <p class="price mb0">$180</p>
+      <p>($2 per copy)</p>
+    </div>
+    <div class="paypal p1">
+      <h3><b>Premium Subscription</b></h3>
+      <h4 class="mb1">for offices and donors</h4>
+      <p>Up to 20 copies of Paprika! delivered to your office or library for every issue+ periodic swag, free tickets to events and name on website.</p>
+      <a class="subscribe-button mb1" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=U6Q7KJH8MHPQG" target="_blank">Subscribe</a>
+      <p class="price mb0">$500</p>
+    </div>
   </div>
 
 </div>
+
+<style>
+  .subscribe-button {
+    background: black;
+    color: white;
+    padding: 8px 16px;
+    display: inline-block;
+  }
+
+  .subscribe-button:hover {
+    color: hsl(16, 83%, 54%);
+  }
+
+  .paypal {
+    width: 100%;
+    border: 0.2rem solid black;
+  }
+</style>
 
 <script>
   export default {
     components: {
       Title: '../../components/Title.html'
+    },
+    async preload({ params, query }) {
+      const maskFields = 'content/rendered'
+      const res = await this.fetch(`/support.json?fields=${maskFields}`)
+      if (!res.ok) {
+        const message = await res.text()
+        return this.error(res.status, message);
+      }
+      const data = await res.json()
+      return { page: data }
     }
   };
 </script>
