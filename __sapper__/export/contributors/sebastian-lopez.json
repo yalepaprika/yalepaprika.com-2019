@@ -1,1 +1,1 @@
-request to https://api.yalepaprika.com/wp-json/wp/v2/contributors?slug=sebastian-lopez failed, reason: connect ETIMEDOUT 159.89.34.209:443
+{"title":{"rendered":"Sebastian Lopez"},"meta":{"degree":"M.Arch, Rice University","graduation_year":"2022","folds_edited":[],"folds_designed":[],"posts_contributed":[{"title":{"rendered":"Site Specific"},"slug":"site-specific","meta":{"contributors":[{"title":{"rendered":"Sebastian Lopez"}}]}}]}}
