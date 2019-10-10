@@ -95,6 +95,8 @@
 </style>
 
 <script>
+  import { sendPageView } from '../lib/analytics.js'
+  
   export default {
     components: {
       Title: '../../components/Title.html'
@@ -108,6 +110,9 @@
       }
       const data = await res.json()
       return { page: data }
+    },
+    oncreate() {
+      sendPageView()
     }
   };
 </script>

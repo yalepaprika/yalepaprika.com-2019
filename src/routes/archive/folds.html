@@ -5,6 +5,8 @@
 <FoldArchive {folds}/>
 
 <script>
+  import { sendPageView } from '../../lib/analytics.js'
+
   export default {
     components: {
       FoldArchive: '../../../components/FoldArchive.html'
@@ -22,6 +24,9 @@
       }
       const data = await res.json()
       return { folds: data }
+    },
+    oncreate() {
+      sendPageView()
     }
   };
 </script>

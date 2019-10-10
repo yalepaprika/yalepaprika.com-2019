@@ -2,14 +2,12 @@
   <title>Folds</title>
 </svelte:head>
 
-<Title title="Folds"/>
-<FoldGrid {layout}/>
-
-<style>
-</style>
+<Title title="Folds" />
+<FoldGrid {layout} />
 
 <script>
   import GridLayout from './_grid'
+  import { sendPageView } from '../../lib/analytics.js'
 
   export default {
     components: {
@@ -50,6 +48,9 @@
       return {
         layout: grid.layout()
       }
+    },
+    oncreate() {
+      sendPageView()
     }
   };
 

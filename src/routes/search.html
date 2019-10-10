@@ -66,6 +66,7 @@
 <script>
   import lunr from 'lunr'
   import fly from 'svelte-transitions-fly';
+  import { sendPageView } from '../lib/analytics.js'
 
   export default {
     helpers: {
@@ -127,6 +128,9 @@
         }
         return out
       }
+    },
+    oncreate() {
+      sendPageView()
     }
   };
 </script>

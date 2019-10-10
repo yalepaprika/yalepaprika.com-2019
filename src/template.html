@@ -30,6 +30,31 @@
   <!-- Sapper creates a <script> tag containing `app/client.js`
        and anything else it needs to hydrate the app and
        initialise the router -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '127635661242246');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=127635661242246&ev=PageView&noscript=1"
+  /></noscript>
+  <script>
+    (function(f, a, t, h, o, m){
+      a[h]=a[h]||function(){
+        (a[h].q=a[h].q||[]).push(arguments)
+      };
+      o=f.createElement('script'),
+      m=f.getElementsByTagName('script')[0];
+      o.async=1; o.src=t; o.id='fathom-script';
+      m.parentNode.insertBefore(o,m)
+    })(document, window, '//analytics.yalepaprika.com/tracker.js', 'fathom');
+  </script>
   %sapper.scripts%
 </body>
 </html>

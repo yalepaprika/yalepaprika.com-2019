@@ -5,6 +5,8 @@
 <ArticleArchive {articles}/>
 
 <script>
+  import { sendPageView } from '../../lib/analytics.js'
+
   export default {
     components: {
       ArticleArchive: '../../../components/ArticleArchive.html'
@@ -21,6 +23,9 @@
       }
       const data = await res.json()
       return { articles: data }
+    },
+    oncreate() {
+      sendPageView()
     }
   };
 </script>

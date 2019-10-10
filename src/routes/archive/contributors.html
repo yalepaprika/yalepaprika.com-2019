@@ -9,6 +9,8 @@
 </style>
 
 <script>
+  import { sendPageView } from '../../lib/analytics.js'
+
   export default {
     components: {
       ContributorsArchive: '../../../components/ContributorsArchive.html'
@@ -22,6 +24,9 @@
       }
       const data = await res.json()
       return { contributors: data }
+    },
+    oncreate() {
+      sendPageView()
     }
   };
 </script>

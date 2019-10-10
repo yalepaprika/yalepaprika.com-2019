@@ -43,6 +43,7 @@
 
 <script>
   import decodeHTML from '../_helpers/decode-html.js'
+  import { sendPageView } from '../../lib/analytics.js'
 
   export default {
     components: {
@@ -70,7 +71,7 @@
       return { contributor: data };
     },
     oncreate() {
-      console.log('json', this.get());
-    },
+      sendPageView()
+    }
   };
 </script>

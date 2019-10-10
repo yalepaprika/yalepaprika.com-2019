@@ -9,3 +9,13 @@
 <style>
 
 </style>
+
+<script>
+  import { sendPageView } from '../lib/analytics.js'
+  
+  export default {
+    oncreate() {
+      sendPageView()
+    }
+  };
+</script>

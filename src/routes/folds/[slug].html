@@ -72,6 +72,7 @@
 <script>
   import dateFormat from '../_helpers/date-format.js'
   import decodeHTML from '../_helpers/decode-html.js'
+  import { sendPageView } from '../../lib/analytics.js'
 
   export default {
     helpers: {
@@ -100,6 +101,9 @@
       }
       const data = await res.json();
       return { fold: data };
+    },
+    oncreate() {
+      sendPageView()
     }
   };
 </script>

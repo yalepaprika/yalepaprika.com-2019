@@ -42,6 +42,7 @@
 <script>
   import dateFormat from '../_helpers/date-format.js'
   import decodeHTML from '../_helpers/decode-html.js'
+  import { sendPageView } from '../../lib/analytics.js'
 
   export default {
     components: {
@@ -64,6 +65,9 @@
       }
       const data = await res.json();
       return { article: data };
+    },
+    oncreate() {
+      sendPageView()
     }
   };
 </script>

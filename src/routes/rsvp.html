@@ -96,9 +96,14 @@
 </style>
 
 <script>
+  import { sendPageView } from '../lib/analytics.js'
+
   export default {
     components: {
       Title: '../../components/Title.html'
+    },
+    oncreate() {
+      sendPageView()
     }
   };
 </script>
