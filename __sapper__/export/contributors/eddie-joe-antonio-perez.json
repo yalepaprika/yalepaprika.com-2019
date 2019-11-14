@@ -1,1 +1,1 @@
-request to https://api.yalepaprika.com/wp-json/wp/v2/contributors?slug=eddie-joe-antonio-perez failed, reason: connect ETIMEDOUT 159.89.34.209:443
+{"title":{"rendered":"Eddie Joe Antonio Pérez"},"meta":{"degree":"B.A.","graduation_year":"2019","folds_edited":[],"folds_designed":[],"posts_contributed":[{"title":{"rendered":"That Bodega Down There"},"slug":"that-bodega-down-there","meta":{"contributors":[{"title":{"rendered":"Eddie Joe Antonio Pérez"}}]}}]}}
