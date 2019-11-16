@@ -7,7 +7,7 @@ class Grid {
   constructor(lastModified) {
     this.packer = new Packer()
     this.items = []
-    const seed = lastModified || "determinism"
+    const seed = lastModified + "hello" || "determinism"
     this.rng = new Prando(seed)
     this.margin = 0
   }
@@ -16,7 +16,7 @@ class Grid {
     let aspect = fold.meta.fold_front.media_details.height /
       fold.meta.fold_front.media_details.width
     let creases = fold.meta.creases
-    let spread = fold.meta.bulletin ? 'full' : SPREADS[this.rng.nextInt(0, creases)]
+    let spread = fold.meta.bulletin ? 'full' : SPREADS[this.rng.nextInt(0, 2)]
     let item =  { fold, aspect, spread, tilt: this.rng.nextBoolean() }
     switch (spread) {
       case 'full':

@@ -17,7 +17,7 @@
     async preload({ params, query }) {
       const maskFields = 'title/rendered,slug,' +
         'meta(' +
-          'volume,number,bulletin,creases,' +
+          'volume,number,bulletin,' +
           'fold_front/media_details(height,width,sizes/full/source_url),' +
           'fold_editors(title/rendered,slug),' +
           'graphic_designer(title/rendered,slug),' +
