@@ -1,7 +1,7 @@
 <table class="c12">
   {#each folds as fold}
     <tr>
-      <td>{fold.meta.volume}-{fold.meta.number}</td>
+      <td>{fold.meta.volume}-{fold.meta.number}{fold.meta.bulletin ? 'B' : ''}</td>
       <td><a rel="prefetch" href="/folds/{fold.slug}">{@html fold.title.rendered}</a></td>
       <td class="sm-c6 dn sm-dtc">
       {#if fold.meta.fold_editors}

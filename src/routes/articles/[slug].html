@@ -19,7 +19,7 @@
         </ul>
       {/if}
       {#if article.meta.fold}
-        <p class="mb0">{article.meta.fold.meta.volume}-{article.meta.fold.meta.number}</p>
+        <p class="mb0">{article.meta.fold.meta.volume}-{article.meta.fold.meta.number}{article.meta.fold.meta.bulletin ? 'B' : ''}</p>
         <p>{@html article.meta.fold.title.rendered}</p>
         <h5>{dateFormat(article.meta.fold.meta.publication_date)}</h5>
       {/if}
@@ -60,7 +60,7 @@
       const maskFields = 'title/rendered,content/rendered,' +
         'meta(' +
           'contributors(title/rendered,slug,meta(degree,graduation_year)),' +
-          'fold(title/rendered,meta(volume,number,publication_date))'
+          'fold(title/rendered,meta(volume,number,bulletin,publication_date))'
         ')'
       const res = await this.fetch(`articles/${params.slug}.json?fields=${maskFields}`);
       if (!res.ok) {

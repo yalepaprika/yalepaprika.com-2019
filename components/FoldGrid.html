@@ -12,11 +12,7 @@
       {/if}
       <div class="dn sm-db" style="transform: rotate(0);">
         <a rel="prefetch" href="/folds/{item.fold.slug}">
-          {#if !item.fold.meta.bulletin}
-            <h2>{item.fold.meta.volume}-{item.fold.meta.number} {@html item.fold.title.rendered}</h2>
-          {:else}
-            <h2>{item.fold.meta.volume}-B {@html item.fold.title.rendered}</h2>
-          {/if}
+          <h2>{item.fold.meta.volume}-{item.fold.meta.number}{item.fold.meta.bulletin ? 'B' : ''} {@html item.fold.title.rendered}</h2>
         </a>
       </div>
     </div>

@@ -6,7 +6,7 @@
 <div class="x xw">
   <div class="c12 sm-c2 p1">
     <h1>{@html fold.title.rendered}</h1>
-    <h2>{fold.meta.volume}-{fold.meta.number}</h2>
+    <h2>{fold.meta.volume}-{fold.meta.number}{fold.meta.bulletin ? 'B' : ''}</h2>
   </div>
   <div class="c12 sm-c4 p1 content">
     {@html fold.content.rendered}
@@ -95,7 +95,7 @@
     async preload({ params, query }) {
       const maskFields = 'slug,title/rendered,content/rendered,' +
         'meta(' +
-          'volume,number,publication_date,website,' +
+          'volume,number,bulletin,publication_date,website,' +
           'pdf/source_url,' +
           'fold_front/media_details/sizes/full/source_url,' +
           'fold_editors(title/rendered,slug),' +
