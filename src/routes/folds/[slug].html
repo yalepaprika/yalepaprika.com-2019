@@ -53,7 +53,16 @@
       </ul>
     {/if}
     <p>Published on {dateFormat(fold.meta.publication_date)}</p>
-    {#if fold.meta.fold_front}
+    {#if fold.meta.pdf}
+      <p><a href="{fold.meta.pdf.source_url}" download="{fold.meta.volume}-{fold.meta.number}-{fold.slug}.pdf" target="_blank">Download the fold PDF</a></p>
+    {/if}
+    {#if fold.meta.fold_front && fold.meta.pdf}
+      <a href="{fold.meta.pdf.source_url}" download="{fold.meta.volume}-{fold.meta.number}-{fold.slug}.pdf" target="_blank">
+        <div class="w100 oh bgc-white">
+          <img class="mx100 fold-front" src="{fold.meta.fold_front.media_details.sizes.full.source_url}">
+        </div>
+      </a>
+    {:elseif fold.meta.fold_front}
       <div class="w100 oh bgc-white">
         <img class="mx100 fold-front" src="{fold.meta.fold_front.media_details.sizes.full.source_url}">
       </div>
@@ -84,9 +93,10 @@
       Title: '../../../components/Title.html'
     },
     async preload({ params, query }) {
-      const maskFields = 'title/rendered,content/rendered,' +
+      const maskFields = 'slug,title/rendered,content/rendered,' +
         'meta(' +
           'volume,number,publication_date,website,' +
+          'pdf/source_url,' +
           'fold_front/media_details/sizes/full/source_url,' +
           'fold_editors(title/rendered,slug),' +
           'graphic_designer(title/rendered,slug),' +

@@ -1,15 +1,21 @@
 <div class="psa l0" style="width: 100vw; height: {layout.height}vw">
    {#each layout.items as item, i}
     <div class="psa" style="left: {layout.slots[i * 2]}vw; top: {layout.slots[i * 2 + 1]}vw; width: {item._width}vw; height: {item._height}vw; padding: {margin * item._height}vw {margin * item._width}vw;">
-      <div class="mb0-5 w100 h100">
-        <a rel="prefetch" href="/folds/{item.fold.slug}"><svelte:component this={getSpread(item.spread)} media={item.fold.meta.fold_front}/></a>
-      </div>
-      <div class="dn sm-db">
+      {#if !item.fold.meta.bulletin}
+        <div class="mb0-5 w100 h100">
+          <a rel="prefetch" href="/folds/{item.fold.slug}"><svelte:component this={getSpread(item.spread)} media={item.fold.meta.fold_front}/></a>
+        </div>
+      {:else}
+        <div class="mb0-5 w100 h100" style="transform: rotate({item.tilt ? -6 : 6}deg);">
+          <a rel="prefetch" href="/folds/{item.fold.slug}"><svelte:component this={getSpread(item.spread)} media={item.fold.meta.fold_front}/></a>
+        </div>
+      {/if}
+      <div class="dn sm-db" style="transform: rotate(0);">
         <a rel="prefetch" href="/folds/{item.fold.slug}">
           {#if !item.fold.meta.bulletin}
             <h2>{item.fold.meta.volume}-{item.fold.meta.number} {@html item.fold.title.rendered}</h2>
           {:else}
-            <h2>{item.fold.meta.volume}-Bulletin</h2>
+            <h2>{item.fold.meta.volume}-B {@html item.fold.title.rendered}</h2>
           {/if}
         </a>
       </div>

@@ -16,8 +16,8 @@ class Grid {
     let aspect = fold.meta.fold_front.media_details.height /
       fold.meta.fold_front.media_details.width
     let creases = fold.meta.creases
-    let spread = SPREADS[this.rng.nextInt(0, creases)]
-    let item =  { fold, aspect, spread }
+    let spread = fold.meta.bulletin ? 'full' : SPREADS[this.rng.nextInt(0, creases)]
+    let item =  { fold, aspect, spread, tilt: this.rng.nextBoolean() }
     switch (spread) {
       case 'full':
         item._width = 50

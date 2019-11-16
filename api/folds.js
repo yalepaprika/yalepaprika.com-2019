@@ -12,7 +12,6 @@ function get (id, embedded) {
 function list (embedded) {
   return fetch(`/wp/v2/folds?per_page=100`)
     .then(folds => Promise.all(folds.map(fold => prepareFold(fold, embedded))))
-    .then(folds => folds.filter(fold => !fold.meta.bulletin))
     .then(folds => folds.sort(dateSort))
 }
 
