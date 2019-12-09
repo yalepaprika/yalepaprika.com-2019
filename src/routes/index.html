@@ -27,7 +27,7 @@
       </form>
     </div>
   </div>
-  <div class="c12 sm-c4">
+  <div class="c12 sm-c4 content">
     {@html fold.content.rendered}
   </div>
 </div>
@@ -66,6 +66,17 @@
   .fold-front {
     opacity: 0.8;
     mix-blend-mode: screen;
+  }
+
+  :global(.content img) {
+    display: block;
+    margin-bottom: 1rem;
+    width: 100%;
+    height: auto;
+  }
+
+  :global(.content p) {
+    padding: 0;
   }
 </style>
 
