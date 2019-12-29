@@ -57,7 +57,7 @@
     async preload({ params, query }) {
       const maskFields = 'title/rendered,' +
       'meta(' +
-        'degree,graduation_year,' +
+        'degree,graduation_year,dual_degree,organization,' +
         'folds_edited(slug,meta(fold_front(media_details(sizes(full(source_url)))))),' +
         'folds_designed(slug,meta(fold_front(media_details(sizes(full(source_url)))))),' +
         'posts_contributed(title/rendered,slug,meta/contributors(title/rendered))' +

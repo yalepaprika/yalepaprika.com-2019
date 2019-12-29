@@ -33,7 +33,7 @@ function prepareContributor (contributor, embedded) {
 
 function sanitize (contributor) {
   if (!contributor.meta) contributor.meta = {}
-  if (!contributor.meta.organization) contributor.meta.organization = false
+  contributor.meta.organization = (contributor.meta.organization == "1")
   return contributor
 }
 

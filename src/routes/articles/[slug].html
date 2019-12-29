@@ -60,7 +60,7 @@
       const maskFields = 'title/rendered,content/rendered,' +
         'meta(' +
           'contributors(title/rendered,slug,meta(degree,graduation_year)),' +
-          'fold(title/rendered,meta(volume,number,bulletin,publication_date))'
+          'fold(title/rendered,slug,meta(volume,number,bulletin,publication_date))'
         ')'
       const res = await this.fetch(`articles/${params.slug}.json?fields=${maskFields}`);
       if (!res.ok) {
