@@ -10,8 +10,8 @@ class Cache {
     if (this.ready) return Promise.resolve()
     return lastModified.get()
       .then(ISOString => {
-        console.log('opened cache', '2020-01-30T02:39:55.000Z')
-        this.cache = new _Cache('2020-01-30T02:39:55.000Z')
+        console.log('opened cache', ISOString)
+        this.cache = new _Cache(ISOString)
       })
       .then(() => {
         this.ready = true

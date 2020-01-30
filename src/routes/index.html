@@ -2,9 +2,7 @@
   <title>Paprika!</title>
 </svelte:head>
   <div class="psa co1 mt3 c10 sm-c4 t0 l0 z1">
-    <div class="w100 oh bgc-paprika">
-      <img class="mx100 fold-front" src="{fold.meta.fold_front.media_details.sizes.full.source_url}">
-    </div>
+    <CanvasImage image="{fold.meta.fold_front}" />
   </div>
 <div class="x">
   <Title title={fold.title.rendered}/>
@@ -86,13 +84,14 @@
   export default {
     components: {
       Title: '../../components/Title.html',
-      ArticleList: '../../components/ArticleList.html'
+      ArticleList: '../../components/ArticleList.html',
+      CanvasImage: '../../components/CanvasImage.html'
     },
     async preload({ params, query }) {
       const maskFields = 'title/rendered,content/rendered,' +
         'meta(' +
           'volume,number,publication_date,' +
-          'fold_front/media_details/sizes/full/source_url,' +
+          'fold_front/media_details(width,height,sizes/full/source_url),' +
           'fold_editors(title/rendered,slug),' +
           'graphic_designer(title/rendered,slug),' +
           'positions_editor(title/rendered,slug),' +

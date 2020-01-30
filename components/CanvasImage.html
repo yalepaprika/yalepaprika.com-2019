@@ -1,0 +1,62 @@
+<div ref:container class="psr w100 oh" style="padding-bottom: { aspectRatio(image)}%;">
+	<canvas ref:canvas></canvas>
+</div>
+
+<style>
+	canvas {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+	}
+</style>
+
+<script>
+	export default {
+		helpers: {
+			aspectRatio: (image) => parseInt(image.media_details.height) / parseInt(image.media_details.width) * 100
+		},
+		oncreate() {
+			const container = this.refs.container;
+			const width = container.offsetWidth
+			const height = container.offsetHeight
+			const canvas = this.refs.canvas;
+			const ctx = canvas.getContext('2d');
+			const devicePixelRatio = (window && window.devicePixelRatio) || 1;
+			const backingStoreRatio = (
+			    ctx.webkitBackingStorePixelRatio ||
+			    ctx.mozBackingStorePixelRatio ||
+			    ctx.msBackingStorePixelRatio ||
+			    ctx.oBackingStorePixelRatio ||
+			    ctx.backingStorePixelRatio || 1
+			  );
+
+			const ratio = devicePixelRatio / backingStoreRatio;
+
+			  if (devicePixelRatio !== backingStoreRatio) {
+			    // set the 'real' canvas size to the higher width/height
+			    canvas.width = width * ratio;
+			    canvas.height = height * ratio;
+
+			    // ...then scale it back down with CSS
+			    canvas.style.width = width + 'px';
+			    canvas.style.height = height + 'px';
+			  } else {
+			    // this is a normal 1:1 device; just scale it simply
+			    canvas.width = width;
+			    canvas.height = height;
+			    canvas.style.width = '';
+			    canvas.style.height = '';
+			  }
+
+			  ctx.scale(ratio, ratio);
+			const { image } = this.get();
+			const img = new Image(width * ratio, height * ratio)
+			img.onload = function () {
+			   ctx.drawImage(img, 0, 0, width, height);
+			}
+			img.src = image.media_details.sizes.full.source_url
+		}
+	}
+</script>
