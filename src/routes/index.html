@@ -2,7 +2,7 @@
   <title>Paprika!</title>
 </svelte:head>
   <div class="psa co1 mt3 c10 sm-c4 t0 l0 z1">
-    <CanvasImage image="{fold.meta.fold_front}" />
+    <CanvasImage image="{fold.meta.fold_front}" faded />
   </div>
 <div class="x">
   <Title title={fold.title.rendered}/>
@@ -61,10 +61,6 @@
       margin-top: 15rem;
     }
   }
-  .fold-front {
-    opacity: 0.8;
-    mix-blend-mode: screen;
-  }
 
   :global(.content img) {
     display: block;
@@ -91,7 +87,7 @@
       const maskFields = 'title/rendered,content/rendered,' +
         'meta(' +
           'volume,number,publication_date,' +
-          'fold_front/media_details(width,height,sizes/full/source_url),' +
+          'fold_front/media_details(width,height,sizes),' +
           'fold_editors(title/rendered,slug),' +
           'graphic_designer(title/rendered,slug),' +
           'positions_editor(title/rendered,slug),' +

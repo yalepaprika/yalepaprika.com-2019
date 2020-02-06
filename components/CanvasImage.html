@@ -1,62 +1,120 @@
 <div ref:container class="psr w100 oh" style="padding-bottom: { aspectRatio(image)}%;">
-	<canvas ref:canvas></canvas>
+  <canvas ref:canvas></canvas>
 </div>
 
 <style>
-	canvas {
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		right: 0;
-		left: 0;
-	}
+  canvas {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
 </style>
 
 <script>
-	export default {
-		helpers: {
-			aspectRatio: (image) => parseInt(image.media_details.height) / parseInt(image.media_details.width) * 100
-		},
-		oncreate() {
-			const container = this.refs.container;
-			const width = container.offsetWidth
-			const height = container.offsetHeight
-			const canvas = this.refs.canvas;
-			const ctx = canvas.getContext('2d');
-			const devicePixelRatio = (window && window.devicePixelRatio) || 1;
-			const backingStoreRatio = (
-			    ctx.webkitBackingStorePixelRatio ||
-			    ctx.mozBackingStorePixelRatio ||
-			    ctx.msBackingStorePixelRatio ||
-			    ctx.oBackingStorePixelRatio ||
-			    ctx.backingStorePixelRatio || 1
-			  );
+  export default {
+    data () {
+      return {
+        img: null,
+        width: 0,
+        height: 0,
+        ratio: 0
+      };
+    },
+    helpers: {
+      aspectRatio: (image) => parseInt(image.media_details.height) / parseInt(image.media_details.width) * 100
+    },
+    oncreate() {
+      this.resize()
+      const { image, width, height, ratio } = this.get();
+      const img = new Image(width * ratio, height * ratio)
+      img.crossOrigin = "Anonymous";
+      img.onload = () => {
+        this.set({
+          img
+        });
+        this.draw()
+      }
+      // absolutely bonkers bug:
+      // https://serverfault.com/questions/856904/chrome-s3-cloudfront-no-access-control-allow-origin-header-on-initial-xhr-req/856948#856948
+      img.src = `${image.media_details.sizes.full.source_url}?x-request=js`
 
-			const ratio = devicePixelRatio / backingStoreRatio;
+      const onresize = () => {
+        this.resize();
+        this.draw();
+      }
+      window.addEventListener( 'resize', onresize, false );
+  
+      this.on( 'teardown', () => {
+        window.removeEventListener( 'resize', onresize, false );
+      });
+    },
+    methods: {
+      draw () {
+        const { img, width, height, faded } = this.get();
+        console.log(faded)
+        if (!img || !width || !height) return
+        const canvas = this.refs.canvas;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const data = imageData.data;
+        for (let i = 0; i < data.length; i += 4) {
+          let avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
+          // lerp between hsl(16, 83%, 54%) paprika and white
+          const [r, g, b] = hsl2rgb(16, .83, .54 + .46 * (avg / 255))
+          data[i] = r * 255
+          data[i+1] = g * 255
+          data[i+2] = b * 255
+          data[i+3] = faded ? 0.8 * data[i+3] : data[i+3] // .8 opacity
+        }
+        ctx.putImageData(imageData, 0, 0);
+        function hsl2rgb(h,s,l) {
+          let a=s*Math.min(l,1-l);
+          let f= (n,k=(n+h/30)%12) => l - a*Math.max(Math.min(k-3,9-k,1),-1);                 
+          return [f(0),f(8),f(4)];
+        }
+      },
+      resize () {
+        const container = this.refs.container;
+        const width = container.offsetWidth
+        const height = container.offsetHeight
+        const canvas = this.refs.canvas;
+        const ctx = canvas.getContext('2d');
+        const devicePixelRatio = (window && window.devicePixelRatio) || 1;
+        const backingStoreRatio = (
+            ctx.webkitBackingStorePixelRatio ||
+            ctx.mozBackingStorePixelRatio ||
+            ctx.msBackingStorePixelRatio ||
+            ctx.oBackingStorePixelRatio ||
+            ctx.backingStorePixelRatio || 1
+          );
 
-			  if (devicePixelRatio !== backingStoreRatio) {
-			    // set the 'real' canvas size to the higher width/height
-			    canvas.width = width * ratio;
-			    canvas.height = height * ratio;
+        const ratio = devicePixelRatio / backingStoreRatio;
+        this.set({
+          width: width,
+          height: height,
+          ratio: devicePixelRatio
+        });
+        if (devicePixelRatio !== backingStoreRatio) {
+          // set the 'real' canvas size to the higher width/height
+          canvas.width = width * ratio;
+          canvas.height = height * ratio;
 
-			    // ...then scale it back down with CSS
-			    canvas.style.width = width + 'px';
-			    canvas.style.height = height + 'px';
-			  } else {
-			    // this is a normal 1:1 device; just scale it simply
-			    canvas.width = width;
-			    canvas.height = height;
-			    canvas.style.width = '';
-			    canvas.style.height = '';
-			  }
+          // ...then scale it back down with CSS
+          canvas.style.width = width + 'px';
+          canvas.style.height = height + 'px';
+        } else {
+          // this is a normal 1:1 device; just scale it simply
+          canvas.width = width;
+          canvas.height = height;
+          canvas.style.width = '';
+          canvas.style.height = '';
+        }
 
-			  ctx.scale(ratio, ratio);
-			const { image } = this.get();
-			const img = new Image(width * ratio, height * ratio)
-			img.onload = function () {
-			   ctx.drawImage(img, 0, 0, width, height);
-			}
-			img.src = image.media_details.sizes.full.source_url
-		}
-	}
+        ctx.scale(ratio, ratio);
+      }
+    }
+  }
 </script>

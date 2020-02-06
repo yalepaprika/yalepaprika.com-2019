@@ -58,14 +58,10 @@
     {/if}
     {#if fold.meta.fold_front && fold.meta.pdf}
       <a href="{fold.meta.pdf.source_url}" download="{fold.meta.volume}-{fold.meta.number}-{fold.slug}.pdf" target="_blank">
-        <div class="w100 oh bgc-white">
-          <img class="mx100 fold-front" src="{fold.meta.fold_front.media_details.sizes.full.source_url}">
-        </div>
+        <CanvasImage image="{fold.meta.fold_front}" />
       </a>
     {:elseif fold.meta.fold_front}
-      <div class="w100 oh bgc-white">
-        <img class="mx100 fold-front" src="{fold.meta.fold_front.media_details.sizes.full.source_url}">
-      </div>
+      <CanvasImage image="{fold.meta.fold_front}" />
     {/if}
   </div>
 </div>
@@ -90,14 +86,15 @@
     },
     components: {
       ArticleList: '../../../components/ArticleList.html',
-      Title: '../../../components/Title.html'
+      Title: '../../../components/Title.html',
+      CanvasImage: '../../../components/CanvasImage.html'
     },
     async preload({ params, query }) {
       const maskFields = 'slug,title/rendered,content/rendered,' +
         'meta(' +
           'volume,number,bulletin,publication_date,website,' +
           'pdf/source_url,' +
-          'fold_front/media_details/sizes/full/source_url,' +
+          'fold_front/media_details(width,height,sizes/full/source_url),' +
           'fold_editors(title/rendered,slug),' +
           'coordinating_editors(title/rendered,slug),' +
           'graphic_designer(title/rendered,slug),' +
