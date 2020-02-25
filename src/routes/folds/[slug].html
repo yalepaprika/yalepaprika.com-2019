@@ -53,6 +53,9 @@
       </ul>
     {/if}
     <p>Published on {dateFormat(fold.meta.publication_date)}</p>
+    {#if fold.meta.volume == 5}
+      <p>Volume V is printed with generous support from the Graham Foundation for Advanced Studies in the Fine Arts</p>
+    {/if}
     {#if fold.meta.pdf}
       <p><a href="{fold.meta.pdf.source_url}" download="{fold.meta.volume}-{fold.meta.number}-{fold.slug}.pdf" target="_blank">Download the fold PDF</a></p>
     {/if}

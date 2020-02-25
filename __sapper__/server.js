@@ -264,9 +264,9 @@ export const manifest = {
 
 	error
 };
-const build_dir = "__sapper__/build";
+const build_dir = "__sapper__/dev";
 const src_dir = "src";
-const dev = false;
+const dev = true;
 const IGNORE = '__SAPPER__IGNORE__';
 
 /*! *****************************************************************************
