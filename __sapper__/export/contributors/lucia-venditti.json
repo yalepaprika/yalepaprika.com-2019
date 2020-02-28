@@ -1,1 +1,1 @@
-{"title":{"rendered":"Lucia Venditti"},"meta":{"degree":"M.Arch II","graduation_year":"2019","dual_degree":"","organization":false,"folds_edited":[{"slug":"condemned-to-be-digital","meta":{"fold_front":{"media_details":{"sizes":{"full":{"source_url":"https://d2rpbtor0vesnk.cloudfront.net/wp-content/uploads/2018/08/22012129/2018_0117_PaprikaVol3-10_CondemnedToBeDigial_v1_front.jpg"}}}}}}],"folds_designed":[],"posts_contributed":[]}}
+request to https://api.yalepaprika.com/wp-json/wp/v2/contributors?slug=lucia-venditti failed, reason: connect ETIMEDOUT 159.89.34.209:443
