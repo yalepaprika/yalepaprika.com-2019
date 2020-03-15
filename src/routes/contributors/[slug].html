@@ -15,9 +15,11 @@
       <h3 class="mb1">Folds (Issue Editor)</h3>
       <div class="x c12">
         {#each contributor.meta.folds_edited as fold}
-          <div class="c4 pr1 pb1">
-            <a rel="prefetch" href="/folds/{fold.slug}"><FullSpread media={fold.meta.fold_front}/></a>
-          </div>
+          {#if fold.meta.fold_front}
+            <div class="c4 pr1 pb1">
+              <a rel="prefetch" href="/folds/{fold.slug}"><FullSpread media={fold.meta.fold_front} alt={fold.slug} /></a>
+            </div>
+          {/if}
         {/each}
       </div>
     {/if}
@@ -25,9 +27,11 @@
       <h3 class="mb1">Folds (Graphic Designer)</h3>
       <div class="x c12">
         {#each contributor.meta.folds_designed as fold}
-          <div class="c4 pr1 pb1">
-            <a rel="prefetch" href="/folds/{fold.slug}"><FullSpread media={fold.meta.fold_front}/></a>
-          </div>
+          {#if fold.meta.fold_front}
+            <div class="c4 pr1 pb1">
+              <a rel="prefetch" href="/folds/{fold.slug}"><FullSpread media={fold.meta.fold_front} alt={fold.slug} /></a>
+            </div>
+          {/if}
         {/each}
       </div>
     {/if}

@@ -3,11 +3,11 @@
     <div class="psa" style="left: {layout.slots[i * 2]}vw; top: {layout.slots[i * 2 + 1]}vw; width: {item._width}vw; height: {item._height}vw; padding: {margin * item._height}vw {margin * item._width}vw;">
       {#if !item.fold.meta.bulletin}
         <div class="mb0-5 w100 h100">
-          <a rel="prefetch" href="/folds/{item.fold.slug}"><svelte:component this={getSpread(item.spread)} media={item.fold.meta.fold_front}/></a>
+          <a rel="prefetch" href="/folds/{item.fold.slug}"><svelte:component this={getSpread(item.spread)} media={item.fold.meta.fold_front} alt="{item.fold.meta.volume}-{item.fold.meta.number}{item.fold.meta.bulletin ? 'B' : ''} {decodeHTML(item.fold.title.rendered)}"/></a>
         </div>
       {:else}
         <div class="mb0-5 w100 h100" style="transform: rotate({item.tilt ? -6 : 6}deg);">
-          <a rel="prefetch" href="/folds/{item.fold.slug}"><svelte:component this={getSpread(item.spread)} media={item.fold.meta.fold_front}/></a>
+          <a rel="prefetch" href="/folds/{item.fold.slug}"><svelte:component this={getSpread(item.spread)} media={item.fold.meta.fold_front}  alt="{item.fold.meta.volume}-{item.fold.meta.number}{item.fold.meta.bulletin ? 'B' : ''} {decodeHTML(item.fold.title.rendered)}"/></a>
         </div>
       {/if}
       <div class="dn sm-db" style="transform: rotate(0);">
@@ -20,6 +20,7 @@
 </div>
 
 <script>
+  import decodeHTML from '../src/routes/_helpers/decode-html.js'
   import FullSpread from './FullSpread.html';
   import HalfSpread from './HalfSpread.html';
   import QuarterSpread from './QuarterSpread.html';
@@ -32,7 +33,8 @@
 
   export default {
     helpers: {
-      getSpread: (slug) => SPREADS[slug]
+      getSpread: (slug) => SPREADS[slug],
+      decodeHTML
     },
     data() {
       return {

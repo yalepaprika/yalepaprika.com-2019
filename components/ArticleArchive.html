@@ -12,12 +12,19 @@
         {/each}
       {/if}
       </td>
-      <td class="sm-c3 dn sm-dtc"><a rel="prefetch" href="/folds/{article.meta.fold.slug}">{@html article.meta.fold.title.rendered}</a></td>
-      <td class="sm-c2 dn sm-dtc">{dateFormat(article.meta.fold.meta.publication_date)}</td>
-
+      {#if article.meta.fold}
+        <td class="sm-c3 dn sm-dtc"><a rel="prefetch" href="/folds/{article.meta.fold.slug}">{@html article.meta.fold.title.rendered}</a></td>
+        <td class="sm-c2 dn sm-dtc">{dateFormat(article.meta.fold.meta.publication_date)}</td>
+      {/if}
     </tr>
   {/each}
 </table>
+
+<style>
+  tr {
+    border-top: 1px solid black;
+  }
+</style>
 
 <script>
   import dateFormat from '../src/routes/_helpers/date-format.js'
