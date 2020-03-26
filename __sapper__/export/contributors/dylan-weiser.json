@@ -1,1 +1,1 @@
-{"title":{"rendered":"Dylan Weiser"},"meta":{"degree":"M.Arch I","graduation_year":"2018","dual_degree":"","organization":false,"folds_edited":[],"folds_designed":[],"posts_contributed":[{"title":{"rendered":"about representation"},"slug":"about-representation","meta":{"contributors":[{"title":{"rendered":"Jeongyoon Song"}},{"title":{"rendered":"Dylan Weiser"}}]}}]}}
+request to https://api.yalepaprika.com/wp-json/wp/v2/contributors?slug=dylan-weiser failed, reason: getaddrinfo ENOTFOUND api.yalepaprika.com
