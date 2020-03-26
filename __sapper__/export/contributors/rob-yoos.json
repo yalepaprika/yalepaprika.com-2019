@@ -1,1 +1,1 @@
-request to https://api.yalepaprika.com/wp-json/wp/v2/contributors?slug=rob-yoos failed, reason: getaddrinfo ENOTFOUND api.yalepaprika.com
+{"title":{"rendered":"Rob Yoos"},"meta":{"degree":"M.Arch I","graduation_year":"2017","dual_degree":"","organization":false,"folds_edited":[{"slug":"form-and-discipline","meta":{"fold_front":{"media_details":{"sizes":{"full":{"source_url":"https://d2rpbtor0vesnk.cloudfront.net/wp-content/uploads/2018/08/22005533/Vol-01-Issue-14_Form_and_Discipline_Gagliardi-Hiatt-Yoos_12-03-15_front.jpg"}}}}}}],"folds_designed":[],"posts_contributed":[]}}

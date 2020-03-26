@@ -1,1 +1,1 @@
-request to https://api.yalepaprika.com/wp-json/wp/v2/contributors?slug=lucie-dawkins failed, reason: getaddrinfo ENOTFOUND api.yalepaprika.com
+{"title":{"rendered":"Lucie Dawkins"},"meta":{"degree":"M.F.A.","graduation_year":"2018","dual_degree":"","organization":false,"folds_edited":[],"folds_designed":[],"posts_contributed":[{"title":{"rendered":"Skewing the Horizon: Theatres Versus the City"},"slug":"skewing-the-horizon-theatres-versus-the-city","meta":{"contributors":[{"title":{"rendered":"Lucie Dawkins"}}]}}]}}

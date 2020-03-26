@@ -1,1 +1,1 @@
-request to https://api.yalepaprika.com/wp-json/wp/v2/contributors?slug=alex-tatusian failed, reason: getaddrinfo ENOTFOUND api.yalepaprika.com
+{"title":{"rendered":"Alex Tatusian"},"meta":{"degree":" ","graduation_year":"","dual_degree":"","organization":false,"folds_edited":[],"folds_designed":[],"posts_contributed":[{"title":{"rendered":"Down on the Boardwalk"},"slug":"down-on-the-boardwalk","meta":{"contributors":[{"title":{"rendered":"Alex Tatusian"}}]}}]}}

@@ -1,1 +1,1 @@
-request to https://api.yalepaprika.com/wp-json/wp/v2/contributors?slug=luka-pajovic failed, reason: getaddrinfo ENOTFOUND api.yalepaprika.com
+{"title":{"rendered":"Luka Pajovic"},"meta":{"degree":"M.Arch II","graduation_year":"2021","dual_degree":"","organization":false,"folds_edited":[],"folds_designed":[],"posts_contributed":[{"title":{"rendered":"Luka Pajovic on Athens, Greece"},"slug":"luka-pajovic-on-athens-greece","meta":{"contributors":[{"title":{"rendered":"Luka Pajovic"}}]}}]}}

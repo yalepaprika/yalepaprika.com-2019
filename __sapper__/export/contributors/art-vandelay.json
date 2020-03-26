@@ -1,1 +1,1 @@
-request to https://api.yalepaprika.com/wp-json/wp/v2/contributors?slug=art-vandelay failed, reason: getaddrinfo ENOTFOUND api.yalepaprika.com
+{"title":{"rendered":"Art Vandelay"},"meta":{"degree":"M.Arch I","graduation_year":"1986","dual_degree":"","organization":false,"folds_edited":[],"folds_designed":[],"posts_contributed":[{"title":{"rendered":"Sorrow Very"},"slug":"sorrow-very","meta":{"contributors":[{"title":{"rendered":"Art Vandelay"}}]}}]}}

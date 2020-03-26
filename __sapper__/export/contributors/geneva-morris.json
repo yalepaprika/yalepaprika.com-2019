@@ -1,1 +1,1 @@
-request to https://api.yalepaprika.com/wp-json/wp/v2/contributors?slug=geneva-morris failed, reason: getaddrinfo ENOTFOUND api.yalepaprika.com
+{"title":{"rendered":"Geneva Morris"},"meta":{"degree":"M.E.D.","graduation_year":"2016","dual_degree":"","organization":false,"folds_edited":[],"folds_designed":[],"posts_contributed":[{"title":{"rendered":"Gender and Space: The Colloquium at YSoA"},"slug":"gender-and-space-the-colloquium-at-ysoa","meta":{"contributors":[{"title":{"rendered":"Geneva Morris"}}]}}]}}

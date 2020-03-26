@@ -1,1 +1,1 @@
-request to https://api.yalepaprika.com/wp-json/wp/v2/contributors?slug=gus-steyer failed, reason: getaddrinfo ENOTFOUND api.yalepaprika.com
+{"title":{"rendered":"Gus Steyer"},"meta":{"degree":"M.Arch I","graduation_year":"2019","dual_degree":"","organization":false,"folds_edited":[],"folds_designed":[],"posts_contributed":[{"title":{"rendered":"Four Cautionary Tales of Prison Architecture"},"slug":"four-cautionary-tales-of-prison-architecture","meta":{"contributors":[{"title":{"rendered":"Gus Steyer"}}]}}]}}

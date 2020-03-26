@@ -1,1 +1,1 @@
-request to https://api.yalepaprika.com/wp-json/wp/v2/contributors?slug=jingwen-li failed, reason: getaddrinfo ENOTFOUND api.yalepaprika.com
+{"title":{"rendered":"Jingwen Li"},"meta":{"degree":"M.Arch II","graduation_year":"2016","dual_degree":"","organization":false,"folds_edited":[],"folds_designed":[],"posts_contributed":[{"title":{"rendered":"Glass Bricks"},"slug":"glass-bricks","meta":{"contributors":[{"title":{"rendered":"Jingwen Li"}}]}}]}}

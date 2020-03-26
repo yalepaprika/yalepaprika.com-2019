@@ -1,1 +1,1 @@
-request to https://api.yalepaprika.com/wp-json/wp/v2/contributors?slug=melinda-agron failed, reason: getaddrinfo ENOTFOUND api.yalepaprika.com
+{"title":{"rendered":"Melinda Agron"},"meta":{"degree":"M.Arch I","graduation_year":"2019","dual_degree":"M.B.A.","organization":false,"folds_edited":[],"folds_designed":[],"posts_contributed":[{"title":{"rendered":"Melinda Agron, Yale School of Architecture, M. Arch I + M.B.A."},"slug":"melinda-agron-yale-school-of-architecture-m-arch-i-m-b-a","meta":{"contributors":[{"title":{"rendered":"Melinda Agron"}}]}}]}}

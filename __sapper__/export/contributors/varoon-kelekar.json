@@ -1,1 +1,1 @@
-request to https://api.yalepaprika.com/wp-json/wp/v2/contributors?slug=varoon-kelekar failed, reason: getaddrinfo ENOTFOUND api.yalepaprika.com
+{"title":{"rendered":"Varoon Kelekar"},"meta":{"degree":"M.Arch II","graduation_year":"2019","dual_degree":"","organization":false,"folds_edited":[],"folds_designed":[],"posts_contributed":[{"title":{"rendered":"Cartoons from Sweden"},"slug":"cartoons-from-sweden","meta":{"contributors":[{"title":{"rendered":"Varoon Kelekar"}}]}}]}}

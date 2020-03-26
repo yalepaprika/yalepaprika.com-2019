@@ -1,1 +1,1 @@
-request to https://api.yalepaprika.com/wp-json/wp/v2/contributors?slug=dimitris-hartonas failed, reason: getaddrinfo ENOTFOUND api.yalepaprika.com
+{"title":{"rendered":"Dimitris Hartonas"},"meta":{"degree":"M.Arch II","graduation_year":"2019","dual_degree":"","organization":false,"folds_edited":[],"folds_designed":[],"posts_contributed":[{"title":{"rendered":"Roman Time"},"slug":"roman-time","meta":{"contributors":[{"title":{"rendered":"Dimitris Hartonas"}}]}}]}}

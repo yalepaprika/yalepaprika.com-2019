@@ -1,1 +1,1 @@
-request to https://api.yalepaprika.com/wp-json/wp/v2/contributors?slug=chat-architects failed, reason: getaddrinfo ENOTFOUND api.yalepaprika.com
+{"title":{"rendered":"CHAT Architects"},"meta":{"degree":" ","graduation_year":"","dual_degree":"","organization":true,"folds_edited":[],"folds_designed":[],"posts_contributed":[{"title":{"rendered":"CHAT Architects, Bangkok, Thailand"},"slug":"chat-architects-bangkok-thailand","meta":{"contributors":[{"title":{"rendered":"CHAT Architects"}}]}}]}}

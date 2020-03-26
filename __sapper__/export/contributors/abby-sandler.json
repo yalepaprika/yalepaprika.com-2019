@@ -1,1 +1,1 @@
-request to https://api.yalepaprika.com/wp-json/wp/v2/contributors?slug=abby-sandler failed, reason: getaddrinfo ENOTFOUND api.yalepaprika.com
+{"title":{"rendered":"Abby Sandler"},"meta":{"degree":"M.Arch I","graduation_year":"2022","dual_degree":"","organization":false,"folds_edited":[],"folds_designed":[],"posts_contributed":[{"title":{"rendered":"The Death of Architecture: A Comedy"},"slug":"the-death-of-architecture","meta":{"contributors":[{"title":{"rendered":"Abby Sandler"}}]}}]}}

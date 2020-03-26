@@ -1,1 +1,1 @@
-request to https://api.yalepaprika.com/wp-json/wp/v2/contributors?slug=gideon-fink-shapiro failed, reason: getaddrinfo ENOTFOUND api.yalepaprika.com
+{"title":{"rendered":"Gideon Fink Shapiro"},"meta":{"degree":"Ph.D.","graduation_year":"","dual_degree":"","organization":false,"folds_edited":[],"folds_designed":[],"posts_contributed":[{"title":{"rendered":"Emulation &#038; Invention in Yale&#8217;s Residential Colleges"},"slug":"emulation-invention-in-yales-residential-colleges","meta":{"contributors":[{"title":{"rendered":"Gideon Fink Shapiro"}}]}}]}}
