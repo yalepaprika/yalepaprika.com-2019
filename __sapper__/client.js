@@ -667,10 +667,3 @@ function prefetchRoutes(pathnames) {
 }
 
 export { start, goto, prefetch, prefetchRoutes };
-
-
-if (typeof window !== 'undefined') {
-	import("/Users/seththompson/code/sapper/sapper-dev-client.js").then(client => {
-		client.connect(10000);
-	});
-}
